@@ -1,13 +1,11 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
+const { postUser } = require('../controllers/user.controller.js');
+
 const router = Router();
 
-router.get('/:id', ( req, res)=>{
-    res.status(200).json({
-        msg:'ok'
-    });
-});
+router.post('/', postUser );
 
 
 module.exports = router;
