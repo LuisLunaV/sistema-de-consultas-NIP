@@ -39,6 +39,7 @@ class Server {
 
   }
 
+  //Establecemos las rutas correspondientes para cada uno de los distintos recursos
   router(){
     this.app.use( this.paths.users, require('../routes/user.routes.js'))
   }

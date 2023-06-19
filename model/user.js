@@ -2,6 +2,9 @@ const { DataTypes } = require('sequelize');
 
 const { db } = require('../database/config.db');
 
+/**
+ * Definimos la estructura de la tabla Users que interactura con la BD.
+ */
 const User = db.define('Users',{
     User_Id:{
         type: DataTypes.INTEGER,
