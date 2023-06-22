@@ -1,14 +1,21 @@
 const express = require("express");
 const cors = require("cors");
+const hbs = require('hbs');
 
 const { dbConnection } = require('../database/config.db');
 
 class Server {
 
     constructor() {
-    this.app = express();
-    this.port = process.env.PORT;
+    this.app   = express();
+    this.port  = process.env.PORT;
+    
+    this.pages = {
+      home: '/',
+    };
+    
     this.paths = {
+      auth:  '/auth',
       users: '/users'
     };
 
@@ -19,6 +26,13 @@ class Server {
     this.middlewares();
     //Ejecutamos las rutas de la aplicacion
     this.router();
+
+    this.handlebars();
+  }
+
+  handlebars(){
+    this.app.set('view engine', 'hbs');
+    hbs.registerPartials(__dirname + './views/partials')
   }
 
   //Llamamos a la BD
@@ -41,6 +55,9 @@ class Server {
 
   //Establecemos las rutas correspondientes para cada uno de los distintos recursos
   router(){
+    this.app.use( this.pages.home, require('../routes/index.routes.js'))
+
+    this.app.use( this.paths.auth, require('../routes/auth.routes.js'))
     this.app.use( this.paths.users, require('../routes/user.routes.js'))
   }
 
