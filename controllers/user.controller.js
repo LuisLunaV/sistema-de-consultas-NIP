@@ -1,14 +1,11 @@
 const { request, response } = require('express');
+const bcryptjs = require('bcryptjs');
 
 const { User } = require('../model/user.js');
 
 const { validateProperties } = require('../helpers/validate-objects.js');
 
 const users = {
-    
-    getUserById: ()=>{
-
-    },
 
     postUser: async( req = request, res = response)=>{
         
@@ -29,6 +26,9 @@ const users = {
 
        user.User_Name = User_Name.toUpperCase();
 
+       const salt = bcryptjs.genSaltSync();
+       user.User_Password = bcryptjs.hashSync( User_Password, salt );
+
        await user.save();
 
        return res.status('201').json({      
@@ -37,9 +37,6 @@ const users = {
 
     },
 
-    updateUser: ()=>{
-
-    },
 
     deleteUser: ()=>{
         
