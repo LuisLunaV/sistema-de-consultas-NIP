@@ -10,7 +10,7 @@ const users = {
     postUser: async( req = request, res = response)=>{
         
         const body = req.body;
-
+try{
         //Validamos si las propiedades del objeto estan vacias
        if( validateProperties( body ) ){
 
@@ -34,7 +34,13 @@ const users = {
        return res.status('201').json({      
             user
         });
-
+        
+    }catch(error){
+        return res.status(500).json({
+            error,
+            msg: 'Hubo un error en el servidor'
+        });
+    }
     },
 
 
