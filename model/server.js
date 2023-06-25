@@ -16,7 +16,8 @@ class Server {
     
     this.paths = {
       auth:  '/auth',
-      users: '/users'
+      users: '/users',
+      consults: '/consults'
     };
 
     //Ejecutamos la conexion a la BD
@@ -57,8 +58,9 @@ class Server {
   router(){
     this.app.use( this.pages.home, require('../routes/index.routes.js'))
 
-    this.app.use( this.paths.auth, require('../routes/auth.routes.js'))
-    this.app.use( this.paths.users, require('../routes/user.routes.js'))
+    this.app.use( this.paths.auth,     require('../routes/auth.routes.js'))
+    this.app.use( this.paths.users,    require('../routes/user.routes.js'))
+    this.app.use( this.paths.consults, require('../routes/consult.routes.js'))
   }
 
   listen() {
