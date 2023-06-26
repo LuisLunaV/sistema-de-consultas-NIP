@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 const { db } = require('../database/config.db');
 
-const ConsultsDetail = db.define('Consults_detail', {
+const Consult_detail = db.define('Consults_detail', {
     CD_Id:{
         type: DataTypes.INTEGER,
         autoIncrement:true,
@@ -34,5 +34,5 @@ const ConsultsDetail = db.define('Consults_detail', {
 });
 
 module.exports = {
-    ConsultsDetail
+    Consult_detail
 }
