@@ -1,16 +1,94 @@
 const { request, response } = require('express');
 
+const { db } = require('../database/config.db');
+
 const { Consult_detail } = require('../model/consults_detail.js');
 
 const consults_detail = {
 
-    postConsultDetail:( req = request, res = response ) => {
-       const body = req.body;
+    getConsultDetail: async( req = request, res = response )=>{
+    
+    try {
+        
+       const { userId, consultDate } = req.body;
 
-       return res.status(200).json({
-        msg: 'Hola mundo'
-       })
+       const information = await db.query('CALL MostrarConsultasPorUsuario(:userId, :consultDate)', {
+
+        replacements: { userId, consultDate },
+        type: db.QueryTypes.SELECT
+
+      });
+    
+      return res.status(200).json({
+        information
+      });
+
+    } catch (error) {
+
+        console.log(error)
+
+        return res.status(500).json({
+            err: error,
+            msg: 'Hubo un error en el servidor'
+        })
     }
-}
+    },
+
+    getConsultDetailId: async( req = request, res = response )=>{
+        
+        try {
+            
+            const { id } = req.params;
+        
+            const { count, rows } = await Consult_detail.findAndCountAll({
+                where:{
+                    CD_ConsultID: id
+                }
+            });
+    
+            return res.status(200).json({        
+                count, 
+                rows            
+            });
+
+        } catch (error) {
+            console.log(error)
+
+            return res.status(500).json({
+                err: error,
+                msg: 'Hubo un error en el servidor'
+            })
+        }
+
+
+    },
+
+    postConsultDetail: async( req = request, res = response ) => {
+
+        try {
+
+            const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP } = req.body;    
+
+            const consults_detail = new Consult_detail({ CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP });
+        
+            await consults_detail.save();
+            
+            return res.status(200).json({
+            
+                consults_detail       
+            
+            });
+            
+        } catch (error) {
+
+            console.log(error)
+
+            return res.status(500).json({
+                err: error,
+                msg: 'Hubo un error en el servidor'
+            })
+        }
+    }
+};
 
 module.exports = consults_detail;
