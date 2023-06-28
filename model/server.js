@@ -3,6 +3,7 @@ const cors = require("cors");
 const hbs = require('hbs');
 
 const { dbConnection } = require('../database/config.db');
+const consults = require("../controllers/consult.controller");
 
 class Server {
 
@@ -17,7 +18,8 @@ class Server {
     this.paths = {
       auth:  '/auth',
       users: '/users',
-      consults: '/consults'
+      consults: '/consults',
+      consultsDetails: '/consult_datails'
     };
 
     //Ejecutamos la conexion a la BD
@@ -56,11 +58,12 @@ class Server {
 
   //Establecemos las rutas correspondientes para cada uno de los distintos recursos
   router(){
-    this.app.use( this.pages.home, require('../routes/index.routes.js'))
+    this.app.use( this.pages.home,            require('../routes/index.routes.js'))
 
-    this.app.use( this.paths.auth,     require('../routes/auth.routes.js'))
-    this.app.use( this.paths.users,    require('../routes/user.routes.js'))
-    this.app.use( this.paths.consults, require('../routes/consult.routes.js'))
+    this.app.use( this.paths.auth,            require('../routes/auth.routes.js'))
+    this.app.use( this.paths.users,           require('../routes/user.routes.js'))
+    this.app.use( this.paths.consults,        require('../routes/consult.routes.js'))
+    this.app.use( this.paths.consultsDetails, require('../routes/consultsDetails.routes.js'))
   }
 
   listen() {
