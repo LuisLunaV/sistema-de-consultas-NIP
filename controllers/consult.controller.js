@@ -6,7 +6,12 @@ const getDate = require('../utils/get-current-date.js');
 
 const consults = {
 
-    getConsultID: async( req= request, res = response )=>{},
+    getConsultID: async( req= request, res = response )=>{
+
+        const { id } = req.params;
+
+        
+    },
 
     postConsult: async( req = request, res = response ) => {
 
