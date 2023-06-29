@@ -6,7 +6,8 @@ const { Consult_detail } = require('../model/consults_detail.js');
 
 const consults_detail = {
 
-    getConsultDetail: async( req = request, res = response )=>{
+    //Ejecutamos el procedimiento almacenado de la BD.
+    getStoredProcedure: async( req = request, res = response )=>{
     
     try {
         
@@ -34,6 +35,7 @@ const consults_detail = {
     }
     },
 
+    //Obtenemos la informacion de consulta detalles por el id de la tabla consulta principal relacionada al usuario.
     getConsultDetailId: async( req = request, res = response )=>{
         
         try {
@@ -63,6 +65,7 @@ const consults_detail = {
 
     },
 
+    //Guardamos los movimiento del usuario en la BD
     postConsultDetail: async( req = request, res = response ) => {
 
         try {
@@ -70,13 +73,15 @@ const consults_detail = {
             const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP } = req.body;    
 
             const consults_detail = new Consult_detail({ CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP });
-        
+
+            //Obtenemos el valor del usuario autenticado desde el archivo validarJWT.
+            const usuarioAutenticado = req.user;
+            
             await consults_detail.save();
             
             return res.status(200).json({
-            
-                consults_detail       
-            
+                consults_detail,
+                usuarioAutenticado    
             });
             
         } catch (error) {
