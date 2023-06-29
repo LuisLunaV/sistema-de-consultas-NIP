@@ -1,9 +1,18 @@
 const { request, response } = require('express');
+
 const bcryptjs = require('bcryptjs');
 
 const { User } = require('../model/user.js');
 
 const { generarJWT } = require('../helpers/generar-jwt.js');
+
+/**
+ * Inicia sesión de un usuario.
+ * @param {Object} req - Objeto de solicitud de Express.
+ * @param {Object} res - Objeto de respuesta de Express.
+ * @returns {Object} - Objeto JSON que contiene el usuario y el token de autenticación.
+ * @throws {Object} - Objeto JSON que contiene detalles del error en caso de que ocurra un error.
+ */
 
 const login = async(req = request, res = response) => {
 

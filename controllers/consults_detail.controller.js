@@ -6,7 +6,14 @@ const { Consult_detail } = require('../model/consults_detail.js');
 
 const consults_detail = {
 
-    //Ejecutamos el procedimiento almacenado de la BD.
+        /**
+     * Ejecuta un procedimiento almacenado de la base de datos para obtener información de consultas por usuario y fecha.
+     * @param {Object} req - Objeto de solicitud de Express.
+     * @param {Object} res - Objeto de respuesta de Express.
+     * @returns {Object} - Objeto JSON que contiene la información de consultas obtenida.
+     * @throws {Object} - Objeto JSON que contiene detalles del error en caso de que ocurra un error.
+     */
+
     getStoredProcedure: async( req = request, res = response )=>{
     
     try {
@@ -35,7 +42,14 @@ const consults_detail = {
     }
     },
 
-    //Obtenemos la informacion de consulta detalles por el id de la tabla consulta principal relacionada al usuario.
+    /**
+     * Obtiene los detalles de una consulta específica por su ID.
+     * @param {Object} req - Objeto de solicitud de Express.
+     * @param {Object} res - Objeto de respuesta de Express.
+     * @returns {Object} - Objeto JSON que contiene el recuento y las filas de los detalles de consulta encontrados.
+     * @throws {Object} - Objeto JSON que contiene detalles del error en caso de que ocurra un error.
+     */
+
     getConsultDetailId: async( req = request, res = response )=>{
         
         try {
@@ -65,7 +79,13 @@ const consults_detail = {
 
     },
 
-    //Guardamos los movimiento del usuario en la BD
+    /**
+     * Crea un nuevo detalle de consulta.
+     * @param {Object} req - Objeto de solicitud de Express.
+     * @param {Object} res - Objeto de respuesta de Express.
+     * @returns {Object} - Objeto JSON que contiene el detalle de consulta creado y el usuario autenticado.
+     * @throws {Object} - Objeto JSON que contiene detalles del error en caso de que ocurra un error.
+     */
     postConsultDetail: async( req = request, res = response ) => {
 
         try {

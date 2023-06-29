@@ -7,10 +7,19 @@ const { validateProperties } = require('../helpers/validate-objects.js');
 
 const users = {
 
+      /**
+     * Crea un nuevo usuario.
+     * @param {Object} req - Objeto de solicitud de Express.
+     * @param {Object} res - Objeto de respuesta de Express.
+     * @returns {Object} - Objeto JSON que contiene el usuario creado.
+     * @throws {Object} - Objeto JSON que contiene detalles del error en caso de que ocurra un error.
+     */
+    
     postUser: async( req = request, res = response)=>{
         
         const body = req.body;
-try{
+
+        try{
         //Validamos si las propiedades del objeto estan vacias
        if( validateProperties( body ) ){
 
@@ -44,9 +53,6 @@ try{
     },
 
 
-    deleteUser: ()=>{
-        
-    }
 };
 
 module.exports = users;
