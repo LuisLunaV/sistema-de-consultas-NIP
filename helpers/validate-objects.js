@@ -1,4 +1,8 @@
-//Vlidamos que no falte informacion en ninguno de los campos del objeto (body)
+/**
+ * Valida que no falte información en ninguno de los campos del objeto (body).
+ * @param {Object} body - Objeto a validar.
+ * @returns {boolean} - Indica si hay campos vacíos en el objeto.
+ */
 const validateProperties =( body )=>{  
     return Object.values(body).some( value => value === '' );
  };
