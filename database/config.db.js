@@ -5,6 +5,11 @@ host: process.env.HOST_DB,
 dialect: 'mysql'
 });
 
+/**
+ * Establece la conexión con la base de datos.
+ * @throws {Error} - Error en caso de que no se pueda establecer la conexión con la base de datos.
+ */
+
 const dbConnection = async () => {
     try {
         await db.authenticate();
