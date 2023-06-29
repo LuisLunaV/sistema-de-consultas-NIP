@@ -1,5 +1,6 @@
 const { request, response } = require('express');
 
+//Validamos que el usuario tenga token valido y que su Rol sea Administrador
 const isAdminRole =( req = request, res = response, next )=>{
     
     if( !req.user ){
@@ -18,3 +19,7 @@ const isAdminRole =( req = request, res = response, next )=>{
 
     next();
 };
+
+module.exports = {
+    isAdminRole
+}
