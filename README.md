@@ -142,7 +142,7 @@ Además, se utiliza el middleware __isAdminRole__ para verificar que el usuario 
 
 - __consult.routes.js__: Define las rutas relacionadas con las consultas, como la ruta para registrar una nueva consulta __( ' / ' )__.
 
-- consultsDetails.routes.js: Define las rutas relacionadas con los detalles de las consultas, como la ruta para obtener los detalles de todas las consultas __( ' / ' )__ y la ruta para obtener los detalles de una consulta por ID __( ' /:id ' )__.
+- __consultsDetails.routes.js__: Define las rutas relacionadas con los detalles de las consultas, como la ruta para obtener los detalles de todas las consultas __( ' / ' )__ y la ruta para obtener los detalles de una consulta por ID __( ' /:id ' )__.
 
 - __index.routes.js__: Define la ruta de inicio __( ' / ' )__.
 
