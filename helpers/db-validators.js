@@ -15,8 +15,8 @@ const userExists = async( User_Name = '' )=>{
         throw new Error( `El usuario ${ User_Name } ya esta siendo utilizado` );
     }
 };
-const userExistById = async( id = '')=>{
-
+const userExistById = async( id )=>{
+    
     const userExist = await User.findByPk( id );
 
     if( !userExist ){
