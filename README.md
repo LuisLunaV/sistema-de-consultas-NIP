@@ -173,5 +173,3 @@ Esta es la documentación completa del proyecto basada en la información propor
 Si tiene alguna pregunta o comentario sobre el proyecto, puede contactarme a través de:
 
 - LinkedIn: https://www.linkedin.com/in/luis-alfredo-luna-villa-411708219/
-- Twitter https://twitter.com/LuisLunaVilla2
-- Facebook
