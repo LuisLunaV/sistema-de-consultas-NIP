@@ -26,6 +26,12 @@ const consults_detail = {
         type: db.QueryTypes.SELECT
 
       });
+      
+      if( Object.keys( information[0] ).length === 0){
+        return res.status(200).json({
+            msg: `No hay consultas del usuario ${userId} del dia ${ consultDate }`
+        })
+      }
     
       return res.status(200).json({
         information
@@ -89,21 +95,19 @@ const consults_detail = {
     postConsultDetail: async( req = request, res = response ) => {
 
         try {
-
-            const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP } = req.body;    
+            
+            const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP } = req;    
 
             const consults_detail = new Consult_detail({ CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP });
 
+
             //Obtenemos el valor del usuario autenticado desde el archivo validarJWT.
-            const usuarioAutenticado = req.user;
+            // const usuarioAutenticado = req.user;
             
             await consults_detail.save();
-            
-            return res.status(200).json({
-                consults_detail,
-                usuarioAutenticado    
-            });
-            
+        
+            return consults_detail;
+        
         } catch (error) {
 
             console.log(error)
