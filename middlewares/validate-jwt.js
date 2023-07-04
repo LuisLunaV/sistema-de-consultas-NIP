@@ -18,12 +18,16 @@ const validarJWT = async( req = request, res = response, next )=>{
 
         //Nos devuelve el objeto { id: 1, iat: 1687978892, exp: 1688022092 }
         const { id }  = jwt.verify( token, process.env.SECRETORPRIVATEKEY );
-        
-        const user = await User.findByPk( id )
+
+        const user = await User.findByPk( id );
+
+        if( !user ){
+            console.log('Error atrapado')
+        }
 
         if( !user.User_Status){
             return res.status(401).json({
-                msg: 'Token no valido - usuario dado de baja'
+                msg: 'Token no valido - Usuario dado de baja'
             })
         }
  /**
