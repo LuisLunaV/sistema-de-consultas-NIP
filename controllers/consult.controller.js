@@ -2,20 +2,9 @@ const { request, response } = require('express');
 
 const { Consult } = require('../model/consult.js');
 
-const getDate = require('../utils/get-current-date.js');
+const { getDates } = require('../utils/get-current-date.js');
 
 const consults = {
-     /**
-     * Obtiene los detalles de una consulta específica por su ID.
-     * @param {Object} req - Objeto de solicitud de Express.
-     * @param {Object} res - Objeto de respuesta de Express.
-     */
-    getConsultID: async( req= request, res = response )=>{
-
-        const { id } = req.params;
-
-        
-    },
 
      /**
      * Crea una nueva consulta.
@@ -28,11 +17,11 @@ const consults = {
 
         try {
             const { Consult_UserID } = req.body;
-            
-            const Consult_Date = getDate();
+
+            const Consult_Date = getDates();
 
             const consult = new Consult({ Consult_UserID, Consult_Date }); 
-             
+            
             await consult.save();
  
             return res.status(200).json({
@@ -48,9 +37,7 @@ const consults = {
                 msg: 'Hubo un error en el servidor'
             })
         }
-    },
-
-    putConsult: ()=>{}
+    }
 
 };
 
