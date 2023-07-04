@@ -52,6 +52,64 @@ const users = {
     }
     },
 
+      /**
+     * Actualiza un usuario existente.
+     * @param {Object} req - Objeto de solicitud de Express.
+     * @param {Object} res - Objeto de respuesta de Express.
+     * @returns {Object} - Objeto JSON que contiene el usuario actualizado.
+     */
+    putUser: async( req = request, res = response  )=>{
+        
+        const { id } = req.params;
+        /**
+         * Ignoramos las propiedades { User_Id, User_Password, ...rest }, y lo que actualizaremos se guardara en el campo rest lo que esta en el campo rest.
+         */
+        const { User_Id, User_Password, ...rest } = req.body;
+
+        //Volvemos a cifrar la contraseña
+        if( User_Password ){
+            const salt = bcryptjs.genSaltSync();
+            rest.User_Password = bcryptjs.hashSync( User_Password, salt );   
+        }
+        
+        const user = await User.findByPk( id );
+
+        rest.User_Name = rest.User_Name.toUpperCase();
+
+        /**
+         * Guardamos los cambios
+         */
+        await user.update( rest, {
+            new: true
+        });
+
+        return res.status(200).json({
+            msg:'Usuario actualizado',
+            user
+        });
+
+    },
+
+      /**
+     * Desactiva un usuario existente.
+     * @param {Object} req - Objeto de solicitud de Express.
+     * @param {Object} res - Objeto de respuesta de Express.
+     * @returns {Object} - Objeto JSON que contiene el mensaje de éxito.
+     */
+    deleteUser: async( req = request, res = response )=>{
+
+        const { id } = req.params;
+
+        const user = await User.findByPk( id );
+
+        await user.update({
+            User_Status: false
+        });
+
+        return res.status(200).json({
+            msg:`El usuario con el id:${ id } ha sido eliminado`
+        })
+    }
 
 };
 
