@@ -64,18 +64,18 @@ const users = {
         /**
          * Ignoramos las propiedades { User_Id, User_Password, ...rest }, y lo que actualizaremos se guardara en el campo rest lo que esta en el campo rest.
          */
-        const { User_Id, User_Password, ...rest } = req.body;
+        const { User_Id,  ...rest } = req.body;
+        console.log(rest)
 
         //Volvemos a cifrar la contraseña
-        if( User_Password ){
+        if( rest.User_Password ){
             const salt = bcryptjs.genSaltSync();
-            rest.User_Password = bcryptjs.hashSync( User_Password, salt );   
+            rest.User_Password = bcryptjs.hashSync( rest.User_Password, salt );   
         }
         
         const user = await User.findByPk( id );
 
         rest.User_Name = rest.User_Name.toUpperCase();
-
         /**
          * Guardamos los cambios
          */
@@ -102,13 +102,20 @@ const users = {
 
         const user = await User.findByPk( id );
 
+        //Validamos el status del usuario solicitado
+        if( !user.User_Status ){
+            return res.status(200).json({
+                msg: `El usuario cons id ${ id } no existe en la BD`
+            });
+        }
+
         await user.update({
             User_Status: false
         });
 
         return res.status(200).json({
             msg:`El usuario con el id:${ id } ha sido eliminado`
-        })
+        });
     }
 
 };
