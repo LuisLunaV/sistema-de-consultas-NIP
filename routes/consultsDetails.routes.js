@@ -2,14 +2,25 @@ const { Router } = require('express');
 
 const { check  } = require('express-validator');
 
-const { validateProperties, validarJWT } = require('../middlewares/index.js');
-const { postConsultDetail, getConsultDetailId, getStoredProcedure } = require('../controllers/consults_detail.controller.js');
+const { validateProperties, 
+        validarJWT, 
+        isAdminRole } = require('../middlewares/index.js');
+const { userExistById } = require('../helpers/db-validators.js');        
+
+const { postConsultDetail, 
+        getConsultDetailId, 
+        getStoredProcedure } = require('../controllers/consults_detail.controller.js');
 
 const router = Router();
 
-router.get('/',    getStoredProcedure)
+router.get('/', [
+    validarJWT,
+    check('userId').custom( userExistById ),
+    isAdminRole,
+    validateProperties
+    ], getStoredProcedure);
 
-router.get('/:id', getConsultDetailId)
+router.get('/:id', getConsultDetailId);
 
 router.post('/', [
 validarJWT,
