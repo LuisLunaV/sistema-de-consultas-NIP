@@ -3,7 +3,7 @@ const cors = require("cors");
 const hbs = require('hbs');
 
 const { dbConnection } = require('../database/config.db');
-const consults = require("../controllers/consult.controller");
+const { clientDbConnection } = require('../database/cliente.db');
 
 class Server {
 
@@ -18,6 +18,7 @@ class Server {
     this.paths = {
       auth:  '/auth',
       users: '/users',
+      clients: '/client',
       consults: '/consults',
       consultsDetails: '/consult_datails'
     };
@@ -41,6 +42,7 @@ class Server {
   //Llamamos a la BD
   async connectDB(){
     await dbConnection();
+    await clientDbConnection();
   }
 
   middlewares() {
@@ -62,6 +64,7 @@ class Server {
 
     this.app.use( this.paths.auth,            require('../routes/auth.routes.js'))
     this.app.use( this.paths.users,           require('../routes/user.routes.js'))
+    this.app.use( this.paths.clients,         require('../routes/client.routes.js'))
     this.app.use( this.paths.consults,        require('../routes/consult.routes.js'))
     this.app.use( this.paths.consultsDetails, require('../routes/consultsDetails.routes.js'))
   }
