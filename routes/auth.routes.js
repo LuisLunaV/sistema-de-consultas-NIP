@@ -13,7 +13,7 @@ router.get('/', ( req, res )=>{
 
 // Ruta para el logeo e inicio de sesión
 router.post('/login', [
-    check('User_Name', 'El nombre de usuario es obligatorio').not().isEmpty(),
+    check('User_NumEmpleado', 'El numero de empleado es obligatorio').not().isEmpty(),
     check('User_Password', 'El password es obligatorio').not().isEmpty(),
     validateProperties 
 ], login);

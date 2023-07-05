@@ -6,7 +6,7 @@ const { getNipClient } = require('../controllers/client.controller');
 
 const router = Router();
 
-router.get('/:number',[
+router.get('/',[
     validarJWT,
     validateProperties
 ]
