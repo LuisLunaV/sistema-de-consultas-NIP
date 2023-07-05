@@ -1,0 +1,73 @@
+{{>header}}
+
+<div class="container d-flex justify-content-center pt-5">
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="col-md-5">
+      <br />
+      <div class="card sombras-bottom">
+        <div class="card-body">
+          
+          <div class="text-center m-4">
+          <h3>
+          <i class="bi bi-person-circle"></i> 
+            Registrate
+            </h3>
+          </div>
+
+          <form class="form-registro">
+            <div class="mb-3">
+              <label for="nombreCompleto" class="form-label"
+                >Nombre completo</label
+              >
+              <input
+                type="text"
+                name="user_name"
+                class="form-control"
+                id="nombreCompleto"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electronico</label>
+              <input
+                type="email"
+                name="user_email"
+                class="form-control"
+                id="email"
+                required
+              />
+              <div id="emailHelp" class="form-text">
+                Nunca compartiremos su correo electrónico con nadie más.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                name="user_password"
+                class="form-control"
+                id="password"
+                minlength="6"
+                required
+              />
+              <div id="emailHelp" class="form-text">
+                Recuerda que tu contraseña debe ser como minimo 6 caracteres
+                intercalando letras, numeros y signos.
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 text-center">
+              <button type="submit" class="btn btn-primary">
+                Crear cuenta
+              </button>
+              <span class=""><a href="/auth">&nbsp;Regresar</a></span>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-muted pb-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer}}
