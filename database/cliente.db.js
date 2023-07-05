@@ -13,7 +13,7 @@ const clientDb = new Sequelize( process.env.NIP_NAME_DB, process.env.NIP_USER_DB
 const clientDbConnection = async () => {
     try {
         await clientDb.authenticate();
-        console.log('Data base client nip in line')
+        console.log('Data base client NIP in line')
     } catch (error) {
         throw new Error( error );
     }
