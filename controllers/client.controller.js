@@ -1,6 +1,6 @@
 const { request, response } = require('express');
 
-const { Nip } = require('../model/clienteNip.js');
+const { Nipsacc } = require('../model/cliente.js');
 
 const { postConsultDetail } = require('../controllers/consults_detail.controller.js');
 
@@ -9,39 +9,51 @@ const nips = {
     getNipClient: async( req = request, res = response )=>{
         try {
 
-            //Recibimos Número de Ticket, Número de Folio y Número de Membresía,
-            const { number } = req.params;
-
             //Obtenemos los valores del usuario logueado y el metodo de consulat
-            const { CD_ConsultID,
+            const { 
+                    Metodo,
+                    Numero,
+                    Marca,
+                    CD_ConsultID,
                     CD_BradID,
                     CD_MethodID
                   } = req.body;
 
             //Buscamos la informacion del cliente
-            const nip = await Nip.findOne({
+            const nip = await Nipsacc.findOne({
                 where:{
-                    Local_Refernc: number
+                    Marca,
+                    //Seleccionamos en metodo
+                    [ Metodo === 'TICKET' ? 'TICKET': Metodo === 'ID_MEMBRESIA' ? 'ID_MEMBRESIA' : 'TELEFONO']
+                    //Validamos el numero segun el metodo
+                    : Metodo === 'TICKET' ? Numero : Metodo === 'ID_MEMBRESIA'  ? parseInt(Numero):  Numero               
                 }
             });
 
+            //Validamos si hay un error al ingresar los datos
+            if( !nip ){
+                return res.status(400).json({
+                    msg: `El metodo ${ Metodo } y el numero ${ Numero } no estan ligados, favor de revisar los datos`
+                })
+            }
+
             //Obtenemos el nip
-            const { Local_Nip } = nip;
+            const { NIP } = nip;
 
 
             const info = {
                 CD_ConsultID,
                 CD_BradID,
                 CD_MethodID,
-                CD_ReferenceNum:number,
-                CD_NIP: Local_Nip
+                CD_ReferenceNum:Numero,
+                CD_NIP: NIP
             }
 
             const result = await postConsultDetail({ ...info })
        
 
             return res.status(200).json({
-                nip,
+                NIP,
                 result
             });
 
@@ -51,7 +63,7 @@ const nips = {
 
             return res.status(500).json({
                 err: error,
-                msg: 'Hubo un error en el servidor'
+                msg: 'Hubo un error en el servidor no pudimos obtener el nip'
             })
         }
     }

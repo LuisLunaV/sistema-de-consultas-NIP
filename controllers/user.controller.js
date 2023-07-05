@@ -29,11 +29,22 @@ const users = {
        
         };
        
-       const { User_Name , User_Password } = body;
+       const { 
+        User_BrandId,
+        User_Name , 
+        User_NumEmpleado,
+        User_Email, 
+        User_Password } = body;
 
-       const user = new User({ User_Name , User_Password });
+       const user = new User({ User_BrandId,
+                               User_Name , 
+                               User_NumEmpleado,
+                               User_Email,
+                               User_Password });
 
-       user.User_Name = User_Name.toUpperCase();
+       user.User_Name        = User_Name.toUpperCase();
+       user.User_NumEmpleado = User_NumEmpleado.toUpperCase();
+
 
        const salt = bcryptjs.genSaltSync();
        user.User_Password = bcryptjs.hashSync( User_Password, salt );

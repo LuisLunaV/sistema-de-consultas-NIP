@@ -16,13 +16,13 @@ const { generarJWT } = require('../helpers/generar-jwt.js');
 
 const login = async(req = request, res = response) => {
 
-    const { User_Name , User_Password } = req.body;
+    const { User_NumEmpleado , User_Password } = req.body;
 
     try{
 
     const user = await User.findOne({
         where: {
-            User_Name
+            User_NumEmpleado
         }
     });
 
