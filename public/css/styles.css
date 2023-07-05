@@ -1,0 +1,19 @@
+
+.div-ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+@media (min-width: 768px){ 
+    .div-ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .div-ul ul{
+        margin-right: 2rem;
+    }
+}
