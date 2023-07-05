@@ -13,7 +13,7 @@ class Server {
     this.port  = process.env.PORT;
     
     this.pages = {
-      home: '/home',
+      home: '/',
       register: '/register'
     };
     

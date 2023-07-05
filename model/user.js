@@ -14,9 +14,20 @@ const User = db.define('Users',{
     User_RolID:{
         type: DataTypes.INTEGER,
     },
+    User_BrandId:{
+        type: DataTypes.INTEGER,
+    },
     User_Name:{
         type: DataTypes.STRING,
         require: [true, 'El nombre del usuario es obligatorio'],
+    },
+    User_NumEmpleado:{
+        type: DataTypes.STRING,
+        require: [true, 'El numero de empledo es obligatorio'],
+    },
+    User_Email:{
+        type: DataTypes.STRING,
+        require: [true, 'El correo es obligatorio'],
     },
     User_Password:{
         type: DataTypes.STRING,
