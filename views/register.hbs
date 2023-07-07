@@ -12,26 +12,51 @@
           <i class="bi bi-person-circle"></i> 
             Registrate
             </h3>
+            <hr>
           </div>
 
-          <form class="form-registro">
+          <form class="form-registro" method="post">
             <div class="mb-3">
               <label for="nombreCompleto" class="form-label"
                 >Nombre completo</label
               >
               <input
                 type="text"
-                name="user_name"
+                name="User_Name"
                 class="form-control"
                 id="nombreCompleto"
                 required
               />
             </div>
+              <div class="mb-3">
+              <label for="NumeroDeEmpleadoCompleto" class="form-label"
+                >Numero de empleado</label
+              >
+              <input
+                type="text"
+                name="User_NumEmpleado"
+                class="form-control"
+                id="NumEmpleadoCompleto"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" name="User_BrandId">
+            <option selected>Seleccione su marca</option>
+            <option value="1">TOKS</option>
+            <option value="2">PANDA EXPRESS</option>
+            <option value="3">BEER FACTORY</option>
+            <option value="4">FAROLITO</option>
+            <option value="5">SHAKE SHACK</option>
+            </select>
+            </div>  
+
             <div class="mb-3">
               <label for="email" class="form-label">Correo electronico</label>
               <input
                 type="email"
-                name="user_email"
+                name="User_Email"
                 class="form-control"
                 id="email"
                 required
@@ -44,15 +69,28 @@
               <label for="password" class="form-label">Password</label>
               <input
                 type="password"
-                name="user_password"
+                name="User_Password"
                 class="form-control"
                 id="password"
-                minlength="6"
+                minlength="10"
+                required
+              />
+            <div id="emailHelp" class="form-text">
+               Mínimo 10 caracteres, intercala letras, números y signos
+              </div>
+            </div>
+              <div class="mb-3">
+              <label for="password" class="form-label">Repite Password</label>
+              <input
+                type="password"
+                name="repitePassword"
+                class="form-control"
+                id="repitePassword"
+                minlength="10"
                 required
               />
               <div id="emailHelp" class="form-text">
-                Recuerda que tu contraseña debe ser como minimo 6 caracteres
-                intercalando letras, numeros y signos.
+                Ayudanos a validar que tu contraseña sea correcta.
               </div>
             </div>
 

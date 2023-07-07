@@ -11,18 +11,19 @@
           <i class="bi bi-person-circle"></i> 
             Login
             </h3>
+            <hr>
           </div>
-          <form action="login.php" method="POST" enctype="multipart/form-data">
+          <form class="form-login" method="post">
             <div class="mb-3 row">
               <div class="w-100">
-                <label for="username" class="col-4 col-form-label"
-                  >Usuario</label
+                <label for="userNempleado" class="col-4 col-form-label"
+                  >N.Empleado</label
                 >
                 <input
                   type="text"
                   class="form-control"
-                  name="username"
-                  id="inputName"
+                  name="User_NumEmpleado"
+                  id="inputNumEmpleado"
                   required
                 />
               </div>
@@ -36,8 +37,8 @@
                 <input
                   type="password"
                   class="form-control"
-                  name="pass"
-                  id="inputName"
+                  name="User_Password"
+                  id="inputPassword"
                   required
                 />
               </div>
@@ -46,7 +47,7 @@
             <div class="mb-3 row">
               <div class="d-grid gap-2 text-center">
                 <button type="submit" class="btn btn-primary">Login</button>
-                <span class=""
+                <span class="mt-2 mb-2"
                   >¿No tienes una cuenta?
                   <a href="/register">&nbsp;Registrate</a></span
                 >
