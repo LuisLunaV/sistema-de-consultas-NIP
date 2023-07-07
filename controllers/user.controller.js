@@ -76,7 +76,6 @@ const users = {
          * Ignoramos las propiedades { User_Id, User_Password, ...rest }, y lo que actualizaremos se guardara en el campo rest lo que esta en el campo rest.
          */
         const { User_Id,  ...rest } = req.body;
-        console.log(rest)
 
         //Volvemos a cifrar la contraseña
         if( rest.User_Password ){

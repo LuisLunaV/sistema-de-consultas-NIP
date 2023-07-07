@@ -28,13 +28,13 @@ const login = async(req = request, res = response) => {
 
     if( !user){
        return res.status(400).json({
-            Error: 'Usuario no existe'
+            User_error: 'Usuario no existe'
         })        
     }
 
     if( !user.User_Status ){
         return res.status(401).json({
-            Error: 'Usuario dado de baja'
+            User_error: 'Usuario dado de baja'
         })        
     }
 
@@ -42,7 +42,7 @@ const login = async(req = request, res = response) => {
 
     if( !isMatched ){
         return res.status(401).json({
-            Error: 'Password incorrecto'
+            Password_error: 'Password incorrecto'
         })
     }
 
