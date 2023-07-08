@@ -1,5 +1,6 @@
 import { htmlIngresarConsulta } from '../components/index.js';
 import { mostrarModalConsulta, limpiarModalProductos } from '../utils/index.js';
+import { formRealizarConsulta } from '../controllers/index.js';
 
 export const consultarNip =()=>{
     const contenedorMetodo = document.querySelector('.contenedor-mis-servicios');
@@ -20,6 +21,8 @@ export const consultarNip =()=>{
 
             htmlIngresarConsulta( data );
             mostrarModalConsulta()
+           
+            formRealizarConsulta();
         }
     });
 }

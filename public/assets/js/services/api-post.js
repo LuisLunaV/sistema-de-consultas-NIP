@@ -1,4 +1,4 @@
-import { url, auth, users } from './index.js'
+import { url, auth, users, consults } from './index.js'
 
 const postLogin = async (data) => {
   try {
@@ -42,9 +42,33 @@ const postUserCreate = async( data )=>{
   } catch (error) {
     throw error;
   }
-}
+};
+
+const postConsultCreate = async( data )=>{
+  try {
+    const resp = await fetch(`${ url }${ consults }`,{
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+
+    if( resp.ok ){
+      const data = await resp.json();
+      return data;
+    }else{
+      const {errors} = await resp.json();
+      throw errors;
+    } 
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 export{
     postLogin,
-    postUserCreate
+    postUserCreate,
+    postConsultCreate
 }

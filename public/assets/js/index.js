@@ -13,7 +13,7 @@ export const init =()=>{
         validarToken();
         htmlMostrarUsuario();
         imprimirMetodos();
-        consultarNip();
+        consultarNip()
         cerrarSesion();
     }
     

@@ -1,4 +1,4 @@
-export const htmlIngresarConsulta =( { Method_Name } )=>{
+export const htmlIngresarConsulta =( { Method_Name, Method_Id } )=>{
 
   const divModal = document.querySelector('#modelId');
 
@@ -10,7 +10,7 @@ export const htmlIngresarConsulta =( { Method_Name } )=>{
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form class="col-md-7 w-100 form-editar">   
+      <form class="col-md-7 w-100 form-consultar-nip" data-value = "${Method_Id}">   
       <div class="mb-3 row">
       <div class="w-100">
         <label for="userNempleado" class="col-4 col-form-label"
@@ -19,14 +19,13 @@ export const htmlIngresarConsulta =( { Method_Name } )=>{
         <input
           type="text"
           class="form-control mt-3"
-          name="User_NumEmpleado"
-          id="inputNumEmpleado"
+          name="Numero"
           required
           pattern="[0-9]+"
         />
       </div>
       <div class="d-grid mt-4 text-center">
-        <button type="submit" class="btn btn-primary">Realizar consulta</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Realizar consulta</button>
         </div>
     </div>   
         </form>
