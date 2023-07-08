@@ -1,13 +1,4 @@
-//URL de la api que vamos a utilizar
-
-const url = "http://localhost:8080";
-
-const { auth, users, consults, consultsDetails } = {
-  auth: "/auth/login",
-  users: "/users",
-  consults: "/consults",
-  consultsDetails: "/consult_datails",
-};
+import { url, auth, users } from './index.js'
 
 const postLogin = async (data) => {
   try {
