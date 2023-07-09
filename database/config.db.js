@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
-const db = new Sequelize( process.env.NAME_DB, process.env.USER_DB, process.env.PASS_DB,{
-host: process.env.HOST_DB,
+const db = new Sequelize( process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD,{
+host: process.env.MYSQLHOST,
 dialect: 'mysql'
 });
 
