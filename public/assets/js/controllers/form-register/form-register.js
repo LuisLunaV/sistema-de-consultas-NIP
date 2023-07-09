@@ -19,6 +19,11 @@ export const formRegister =()=>{
 
         const {repitePassword, ...data} = formData;
     
+        if (data.User_BrandId === "Seleccione su marca") {
+          alert("Por favor, seleccione una marca.");
+          return;
+        }
+
         const resp = await postUserCreate( data )
        .catch((err)=>{
         err.forEach( ( { msg } ) => {
