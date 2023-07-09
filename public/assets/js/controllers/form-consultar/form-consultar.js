@@ -1,5 +1,6 @@
 import { obtenerMarca, crearConsulta } from'../../helper/index.js';
 import { postConsultarNip } from '../../services/api-post.js';
+import { mostrarNip, indicarIncompatibilidadBusqueda } from '../../components/index.js';
 
 const metodos = {
     1: "TICKET",
@@ -42,9 +43,13 @@ export const formRealizarConsulta =()=>{
 
         const token = sessionStorage.getItem('token');
 
-       const informacionNip = await postConsultarNip( token, data );
-
-       console.log( informacionNip );
+        try {
+            
+            const informacionNip = await postConsultarNip( token, data );
+            mostrarNip( informacionNip );
+        } catch (error) {
+            indicarIncompatibilidadBusqueda()        
+        }
 
     });
 };

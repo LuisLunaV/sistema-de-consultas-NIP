@@ -17,3 +17,21 @@
         margin-right: 20px;
     }
 }
+
+/* styles-alert */
+
+.popup-alert{
+    height: auto !important;
+    width: 50% !important;
+    padding: 1;
+}
+
+.title-alert{
+    font-size: 2rem !important;
+    font-family: var(--fuenteSecundaria);
+}
+
+.info-content-alert{
+font-size: 2rem !important;
+font-family: var(--fuenteSecundaria);
+}
