@@ -1,4 +1,4 @@
-import { obtenerMarca } from'../../helper/obtener-marca.js';
+import { obtenerMarca, crearConsulta } from'../../helper/index.js';
 
 const metodos = {
     1: "TICKET",
@@ -13,18 +13,21 @@ export const formRealizarConsulta =()=>{
     formConsultarNip.addEventListener('submit', async( event )=>{
 
         event.preventDefault();
-
+        
         const formData = {};
 
         for( let i of formConsultarNip.elements ){
             if( i.name.length > 0) formData[i.name] = i.value;
         }
         
-        const method_id = event.target.closest(".form-consultar-nip").dataset.value;
         const { Numero } = formData;
-        const { User_BrandId } = JSON.parse( sessionStorage.getItem('user'));
+        const method_id = event.target.closest(".form-consultar-nip").dataset.value;
+
+        const {User_Id, User_BrandId } = JSON.parse( sessionStorage.getItem('user'));
 
         const { Brand_Name } = await obtenerMarca( User_BrandId );
+
+        crearConsulta( User_Id );
 
         const data = {
             Metodo: metodos[method_id],
@@ -35,6 +38,6 @@ export const formRealizarConsulta =()=>{
             CD_MethodID: method_id
         }
 
-        console.log(data)
+        // console.log(data)
     });
 };

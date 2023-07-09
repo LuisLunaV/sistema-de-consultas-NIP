@@ -1,5 +1,6 @@
 import { url, methods, brands } from './index.js';
 
+
 const getMetodos = async()=>{
      // Primero, verificamos si el metodo ya se encuentra en la caché
      const metodo = localStorage.getItem( 'metodos' );
@@ -26,7 +27,7 @@ const getMetodos = async()=>{
     throw error;
 }
 
-}
+};
 
 const getMarca= async()=>{
     // Primero, verificamos si el metodo ya se encuentra en la caché
