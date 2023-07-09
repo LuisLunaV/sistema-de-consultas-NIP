@@ -22,6 +22,11 @@ export const crearConsulta = async( id )=>{
    const { consult } = await postBuscarConsulta( existeConsulta )
   
    //Si no existe ninguna consulta creada con la fecha de hoy, la creamos. Si no, no hacemos nada.
-    if( !consult ) await postConsultCreate( token, data );
+    if( !consult ){
+         const { consult } = await postConsultCreate( token, data );
+         return consult;
+    }
+
+    return consult;
 
 };
