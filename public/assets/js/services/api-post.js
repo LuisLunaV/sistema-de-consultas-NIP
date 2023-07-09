@@ -24,7 +24,7 @@ const postLogin = async (data) => {
 
 const postUserCreate = async( data )=>{
   try {
-    const resp = await fetch(`${url}${users}`,{
+    const resp = await fetch(`${users}`,{
       method: "POST",
       body: JSON.stringify(data),
       headers: {
