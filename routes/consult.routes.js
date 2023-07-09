@@ -4,10 +4,10 @@ const { check } = require('express-validator');
 const { validateProperties } = require('../middlewares/validate-properties.js');
 
 const { userExistById } = require('../helpers/db-validators.js');
-const { postConsult } = require('../controllers/consult.controller.js');
+const { postConsult, postConsultDate } = require('../controllers/consult.controller.js');
 
 const router = Router();
-
+router.post('/dates', postConsultDate)
 router.post('/',[
     check('Consult_UserID','Solo IDs validos').matches(/^[0-9]+$/),
     check('Consult_UserID').custom( userExistById ),
