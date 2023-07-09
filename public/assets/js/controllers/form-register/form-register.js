@@ -26,6 +26,7 @@ export const formRegister =()=>{
 
         const resp = await postUserCreate( data )
        .catch((err)=>{
+        console.log(err)
         err.forEach( ( { msg } ) => {
             alert( msg );
         });
