@@ -4,6 +4,7 @@ const { Sequelize } = require('sequelize');
 // host: process.env.HOST_DB,
 // dialect: 'mysql'
 // });
+
 const db = new Sequelize( process.env.DB_URL );
 /**
  * Establece la conexión con la base de datos.
