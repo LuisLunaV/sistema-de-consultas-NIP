@@ -6,7 +6,7 @@ const { postConsultDetail } = require('../controllers/consults_detail.controller
 
 const nips = {
 
-    getNipClient: async( req = request, res = response )=>{
+    postNipClient: async( req = request, res = response )=>{
         try {
 
             //Obtenemos los valores del usuario logueado y el metodo de consulat
