@@ -1,11 +1,11 @@
 const { Sequelize } = require('sequelize');
 
-// const db = new Sequelize( process.env.NAME_DB, process.env.USER_DB, process.env.PASS_DB,{
-// host: process.env.HOST_DB,
-// dialect: 'mysql'
-// });
+const db = new Sequelize( process.env.NAME_DB, process.env.USER_DB, process.env.PASS_DB,{
+host: process.env.HOST_DB,
+dialect: 'mysql'
+});
 
-const db = new Sequelize( process.env.DB_URL );
+
 /**
  * Establece la conexión con la base de datos.
  * @throws {Error} - Error en caso de que no se pueda establecer la conexión con la base de datos.
