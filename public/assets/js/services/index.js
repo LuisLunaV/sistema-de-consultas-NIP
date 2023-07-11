@@ -2,7 +2,7 @@
 
 const { url, auth, users, consults, consultsDetails, consultsDate, clients, methods, brands } = {
   // url : "http://localhost:8080",
-  url : "https://sistema-de-consultas-production.up.railway.app/",
+  url : "https://sistema-de-consultas-production.up.railway.app",
   auth: "/auth/login",
   users: "/users",
   consults: "/consults",
