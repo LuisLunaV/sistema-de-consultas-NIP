@@ -1,4 +1,4 @@
-import { obtenerMarca, crearConsulta } from "../../helper/index.js";
+import { obtenerMarca, crearConsulta, obtenerDatos } from "../../helper/index.js";
 import { postConsultarNip } from "../../services/api-post.js";
 import {
   mostrarNip,
@@ -18,12 +18,8 @@ export const formRealizarConsulta = () => {
   formConsultarNip.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = {};
-
-    for (let i of formConsultarNip.elements) {
-      if (i.name.length > 0) formData[i.name] = i.value;
-    }
-
+    const formData =  obtenerDatos( formConsultarNip );
+    
     //Obtenemos todos los valores de los input o select del formulario donde se ingresaran los numeros
     const dataForm = formData;
 

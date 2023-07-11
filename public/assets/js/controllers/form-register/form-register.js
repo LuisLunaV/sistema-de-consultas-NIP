@@ -1,22 +1,19 @@
 import { postUserCreate } from '../../services/api-post.js';
-import { compararPasswords } from '../../helper/index.js'
+import { compararPasswords, obtenerDatos } from '../../helper/index.js'
 
-const resgisterForm = document.querySelector('.form-registro');
+const registerForm = document.querySelector('.form-registro');
 
 export const formRegister =()=>{
-    resgisterForm.addEventListener('submit', async( event )=>{
+    registerForm.addEventListener('submit', async( event )=>{
         event.preventDefault();
         
         //Validamos si los password en el registro son diferentes.
       if( !compararPasswords() ){
-        resgisterForm.reset();
+        registerForm.reset();
         return;
       }     
-        const formData = {};
 
-        for( let i of resgisterForm.elements ){
-            if( i.name.length > 0) formData[i.name] = i.value;
-        }
+        const formData = obtenerDatos( registerForm );
 
         //Purgamos la data del segundo password ya comparado
         const {repitePassword, ...data} = formData;
@@ -33,13 +30,13 @@ export const formRegister =()=>{
         err.forEach( ( { msg } ) => {
             alert( msg );
         });
-        resgisterForm.reset();
+        registerForm.reset();
        });
 
        //Validamos que nuestra respuesta haya sido positiva
        if( resp ){
         alert(`Usuario resgitrado con exito`)
-            resgisterForm.reset();
+            registerForm.reset();
             window.location.replace('/auth');
        }
 

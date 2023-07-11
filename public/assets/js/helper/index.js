@@ -4,6 +4,7 @@ import { obtenerMarca } from './obtener-marca.js';
 import { crearConsulta } from './crear-consulta.js';
 import { validarRol } from './validar-rol.js';
 import { obtenerUsuarioMarca } from './obtener-usuario-marca.js';
+import { obtenerDatos } from './form-data.js';
 
 
 export{
@@ -13,5 +14,6 @@ export{
     obtenerMarca,
     obtenerUsuarioMarca,
     crearConsulta,
-    validarRol
+    validarRol,
+    obtenerDatos
 }

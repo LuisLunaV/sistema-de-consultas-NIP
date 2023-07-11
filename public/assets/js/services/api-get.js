@@ -29,7 +29,7 @@ const getMetodos = async()=>{
 
 };
 
-const getMarca= async()=>{
+const getMarca = async()=>{
     // Primero, verificamos si el metodo ya se encuentra en la caché
     const marca = localStorage.getItem( 'marcas' );
 

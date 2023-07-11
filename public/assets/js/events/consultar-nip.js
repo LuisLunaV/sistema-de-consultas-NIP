@@ -19,9 +19,9 @@ export const consultarNip =()=>{
                 return metodo.Method_Id === Number(id);
             });
 
+            //Mostramos la ventana donde ingresaremos los datos para realizar la consulta.
             htmlIngresarConsulta( data );
             mostrarModalConsulta()
-           
             formRealizarConsulta();
         }
     });

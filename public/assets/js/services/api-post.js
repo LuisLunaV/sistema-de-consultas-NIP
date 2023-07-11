@@ -1,4 +1,4 @@
-import { url, auth, users, consults, consultsDate, clients } from './index.js'
+import { url, auth, users, consults, consultsDate, clients, consultsDetails } from './index.js'
 
 const postLogin = async (data) => {
   try {
@@ -118,10 +118,36 @@ const postConsultarNip = async( token, data )=>{
   }
 };
 
+const postBuscarPorUsuarioFecha = async( token, data )=>{
+
+  try {
+    const resp = await fetch(`${ url }${ consultsDetails }`,{
+      method: "POST",
+      body: JSON.stringify( data ),
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": token
+      }
+    });
+       
+       if ( resp.ok ) {
+           const data = await resp.json();  
+           return data;
+  
+       } else{
+           const error = await resp.json();
+           throw error;
+       }
+  } catch (error) {
+   throw error;
+  }
+};
+
 export{
     postLogin,
     postUserCreate,
     postConsultCreate,
     postBuscarConsulta,
-    postConsultarNip
+    postConsultarNip,
+    postBuscarPorUsuarioFecha
 }

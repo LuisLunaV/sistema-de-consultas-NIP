@@ -1,4 +1,4 @@
-import { formLogin, formRegister } from './controllers/index.js';
+import { formLogin, formRegister, formBitacora } from './controllers/index.js';
 import { validarToken, validarRol, obtenerMarca } from './helper/index.js';
 import { imprimirMetodos } from './utils/imprimir-metodos.js';
 import { consultarNip, cerrarSesion } from './events/index.js';
@@ -19,6 +19,7 @@ export const init =()=>{
     if( nombrePagina === '/bitacora'){ 
         validarToken();
         validarRol();
+        formBitacora();
         cerrarSesion();
     };
     if(nombrePagina === '/auth'){

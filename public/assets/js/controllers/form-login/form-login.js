@@ -1,5 +1,5 @@
 import { postLogin } from '../../services/api-post.js';
-import { validarCamposLogin } from '../../helper/validar-campos.js';
+import { validarCamposLogin, obtenerDatos } from '../../helper/index.js';
 
 export const formLogin = ()=>{
     const loginForm          = document.querySelector('.form-login'),
@@ -11,12 +11,7 @@ export const formLogin = ()=>{
 
         event.preventDefault();
 
-        const formData = {};
-
-        for( let i of loginForm.elements ){
-            if( i.name.length > 0) formData[i.name] = i.value;
-        }
-
+        const formData = obtenerDatos( loginForm );
 
         //Enviamos la data al backend y esperamos la respuesta
         const {token, user} = await postLogin(formData)
