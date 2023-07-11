@@ -1,6 +1,5 @@
 import { formLogin, formRegister } from './controllers/index.js';
-import { htmlMostrarUsuario } from './components/nombre-usuario.js';
-import { validarToken } from './helper/index.js';
+import { validarToken, validarRol, obtenerMarca } from './helper/index.js';
 import { imprimirMetodos } from './utils/imprimir-metodos.js';
 import { consultarNip, cerrarSesion } from './events/index.js';
 
@@ -11,13 +10,21 @@ export const init =()=>{
 
     if(nombrePagina === '/'){
         validarToken();
-        htmlMostrarUsuario();
+        validarRol();
         imprimirMetodos();
         consultarNip()
         cerrarSesion();
     }
     
-    if(nombrePagina === '/auth') formLogin();
+    if( nombrePagina === '/bitacora'){ 
+        validarToken();
+        validarRol();
+        cerrarSesion();
+    };
+    if(nombrePagina === '/auth'){
+        obtenerMarca();
+        formLogin()
+    };
 
     if(nombrePagina === '/register') formRegister();
 

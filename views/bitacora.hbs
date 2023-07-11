@@ -1,0 +1,37 @@
+{{> header}}
+{{> navbar}}
+
+  <main class="container contenedor-admin">
+
+<header class="admin-header centrar-flex">    
+    <form class="form-bitacora centrar-flex">
+      <div class="usuario-id">
+        <input placeholder="Ingrsa el numero de usuario" type="search" class="input buscar-usuario">
+      </div>
+      <div class="fecha-inicial">
+         <input type="date" class="form-control" name="fecha-ini" id="fecha-ini" aria-describedby="helpId">
+       </div>
+    </form>
+</header>
+
+<section class="container">
+<div class="container-table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre del usuario</th>
+                <th scope="col">NIP</th>
+                <th scope="col">Numero de referencia</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</div>
+</section>
+
+</main>
+
+
+{{> footer}}

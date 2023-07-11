@@ -14,6 +14,7 @@ class Server {
     
     this.pages = {
       home: '/',
+      bitacora:'/bitacora',
       register: '/register'
     };
     
@@ -68,6 +69,8 @@ class Server {
   router(){
     this.app.use( this.pages.home,            require('../routes/home.routes.js'))
     this.app.use( this.pages.register,        require('../routes/register.routes.js'))
+    this.app.use( this.pages.bitacora,        require('../routes/bitacora.routes'))
+
 
     this.app.use( this.paths.auth,            require('../routes/auth.routes.js'))
     this.app.use( this.paths.brands,         require('../routes/brands.routes'))
