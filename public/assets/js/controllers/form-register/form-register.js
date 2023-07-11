@@ -10,6 +10,7 @@ export const formRegister =()=>{
         //Validamos si los password en el registro son diferentes.
       if( !compararPasswords() ){
         registerForm.reset();
+        alert('Las contraseñas no coinciden');
         return;
       }     
 

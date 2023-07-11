@@ -131,8 +131,8 @@ const postBuscarPorUsuarioFecha = async( token, data )=>{
     });
        
        if ( resp.ok ) {
-           const data = await resp.json();  
-           return data;
+           const { information } = await resp.json();  
+           return information;
   
        } else{
            const error = await resp.json();

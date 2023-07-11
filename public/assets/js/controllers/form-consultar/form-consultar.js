@@ -1,9 +1,7 @@
-import { obtenerMarca, crearConsulta, obtenerDatos } from "../../helper/index.js";
 import { postConsultarNip } from "../../services/api-post.js";
-import {
-  mostrarNip,
-  indicarIncompatibilidadBusqueda,
-} from "../../components/index.js";
+import { mostrarNip, indicarIncompatibilidadBusqueda } from "../../components/index.js";
+import { obtenerMarca, crearConsulta, obtenerDatos } from "../../helper/index.js";
+import { obtenerToken } from '../../utils/obtener-token.js';
 
 //Nombres de las columnas de la BD cliente donde se filtraran los NIP
 const metodos = {
@@ -18,10 +16,10 @@ export const formRealizarConsulta = () => {
   formConsultarNip.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData =  obtenerDatos( formConsultarNip );
-    
+
     //Obtenemos todos los valores de los input o select del formulario donde se ingresaran los numeros
-    const dataForm = formData;
+    const formData =  obtenerDatos( formConsultarNip );
+  
 
     //Obtenemos el data-value que se encotrara en la etiqueta form, el cual es el metodo de consulta.
     const method_id = event.target.closest(".form-consultar-nip").dataset.value;
@@ -32,7 +30,7 @@ export const formRealizarConsulta = () => {
 
     //Dependiendo si se obtuvo un valor de select dentro del formulario, se realizara una condicion, si el valor es true o false(null).
     const { Brand_Name } = await obtenerMarca(
-      dataForm.User_BrandId ? Number(dataForm.User_BrandId) : User_BrandId
+      formData.User_BrandId ? Number(formData.User_BrandId) : User_BrandId
     );
 
     //Creamos la consulta por dia en la BD.
@@ -40,15 +38,15 @@ export const formRealizarConsulta = () => {
 
     const data = {
       Metodo: metodos[method_id],
-      Numero: dataForm.Numero,
+      Numero: formData.Numero,
       Marca: Brand_Name,
       CD_ConsultID: Consult_Id,
       CD_BradID: User_BrandId,
       CD_MethodID: method_id,
     };
 
-    const token = sessionStorage.getItem("token");
-
+    const token = obtenerToken();
+    
     //Enviamos el token y la data para realizar la consulta al backend
     try {
       const informacionNip = await postConsultarNip(token, data);

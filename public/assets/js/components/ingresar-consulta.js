@@ -1,5 +1,7 @@
 import { obtenerUsuarioMarca } from '../helper/obtener-usuario-marca.js';
+
 export const htmlIngresarConsulta =( { Method_Name, Method_Id } )=>{
+  
   const divModal = document.querySelector('#modelId');
   
      const { marca:{ Brand_Name }} =obtenerUsuarioMarca();
