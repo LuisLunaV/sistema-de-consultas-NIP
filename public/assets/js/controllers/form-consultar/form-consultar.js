@@ -5,6 +5,7 @@ import {
   indicarIncompatibilidadBusqueda,
 } from "../../components/index.js";
 
+//Nombres de las columnas de la BD cliente donde se filtraran los NIP
 const metodos = {
   1: "TICKET",
   2: "ID_MEMBRESIA",
@@ -23,18 +24,22 @@ export const formRealizarConsulta = () => {
       if (i.name.length > 0) formData[i.name] = i.value;
     }
 
+    //Obtenemos todos los valores de los input o select del formulario donde se ingresaran los numeros
     const dataForm = formData;
 
+    //Obtenemos el data-value que se encotrara en la etiqueta form, el cual es el metodo de consulta.
     const method_id = event.target.closest(".form-consultar-nip").dataset.value;
 
     const { User_Id, User_BrandId } = JSON.parse(
       sessionStorage.getItem("user")
     );
 
+    //Dependiendo si se obtuvo un valor de select dentro del formulario, se realizara una condicion, si el valor es true o false(null).
     const { Brand_Name } = await obtenerMarca(
       dataForm.User_BrandId ? Number(dataForm.User_BrandId) : User_BrandId
     );
 
+    //Creamos la consulta por dia en la BD.
     const { Consult_Id } = await crearConsulta(User_Id);
 
     const data = {
@@ -48,6 +53,7 @@ export const formRealizarConsulta = () => {
 
     const token = sessionStorage.getItem("token");
 
+    //Enviamos el token y la data para realizar la consulta al backend
     try {
       const informacionNip = await postConsultarNip(token, data);
       mostrarNip(informacionNip);

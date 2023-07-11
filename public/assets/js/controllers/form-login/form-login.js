@@ -18,6 +18,7 @@ export const formLogin = ()=>{
         }
 
 
+        //Enviamos la data al backend y esperamos la respuesta
         const {token, user} = await postLogin(formData)
         .catch( validarCamposLogin );
 
