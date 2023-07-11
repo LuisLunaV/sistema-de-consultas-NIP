@@ -51,7 +51,7 @@ const users = {
 
        await user.save();
 
-       return res.status('201').json({      
+       return res.status(201).json({      
             user
         });
         
