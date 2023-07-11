@@ -18,18 +18,18 @@ const consults_detail = {
     
     try {
         
-       const { userId, consultDate } = req.body;
+       const { NumEmpleado, consultDate } = req.body;
 
-       const information = await db.query('CALL MostrarConsultasPorUsuario(:userId, :consultDate)', {
+       const information = await db.query('CALL MostrarConsultasPorUsuario(:NumEmpleado, :consultDate)', {
 
-        replacements: { userId, consultDate },
+        replacements: { NumEmpleado, consultDate },
         type: db.QueryTypes.SELECT
 
       });
       
       if( Object.keys( information[0] ).length === 0){
         return res.status(200).json({
-            msg: `No hay consultas del usuario ${userId} del dia ${ consultDate }`
+            msg: `No hay consultas del usuario ${ NumEmpleado } del dia ${ consultDate }`
         })
       }
     

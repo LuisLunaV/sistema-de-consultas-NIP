@@ -5,7 +5,7 @@ const { check  } = require('express-validator');
 const { validateProperties, 
         validarJWT, 
         isAdminRole } = require('../middlewares/index.js');
-const { userExistById } = require('../helpers/db-validators.js');        
+const { employeNumberExist } = require('../helpers/db-validators.js');        
 
 const { postConsultDetail, 
         getConsultDetailId, 
@@ -13,9 +13,9 @@ const { postConsultDetail,
 
 const router = Router();
 
-router.get('/', [
+router.post('/', [
     validarJWT,
-    check('userId').custom( userExistById ),
+    check('NumEmpleado').custom( employeNumberExist ),
     isAdminRole,
     validateProperties
     ], getStoredProcedure);

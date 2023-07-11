@@ -27,17 +27,25 @@ const userExistById = async( id )=>{
 };
 
 const emailExist = async( User_Email = '')=>{
-    console.log(User_Email)
     const emailExist = await User.findOne({ where: { User_Email }});
-    console.log(emailExist)
 
     if( emailExist ){
         throw new Error(`El correo ${ User_Email } ya ha sido registrado`);
     }
-}
+};
+
+const employeNumberExist = async( User_NumEmpleado = '')=>{
+    
+    const employeNumberExist = await User.findOne({ where: { User_NumEmpleado }});
+
+    if( !employeNumberExist ){
+        throw new Error(`El empleado con numero: ${ User_NumEmpleado }, no existe`);
+    }
+};
 
 module.exports = {
     userExists,
     userExistById,
-    emailExist
+    emailExist,
+    employeNumberExist
 };
