@@ -1,7 +1,9 @@
+import { obtenerUsuarioMarca } from '../helper/obtener-usuario-marca.js';
 export const htmlIngresarConsulta =( { Method_Name, Method_Id } )=>{
-
   const divModal = document.querySelector('#modelId');
-
+  
+     const { marca:{ Brand_Name }} =obtenerUsuarioMarca();
+     
     const html = `
     <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -12,6 +14,17 @@ export const htmlIngresarConsulta =( { Method_Name, Method_Id } )=>{
     <div class="modal-body">
       <form class="col-md-7 w-100 form-consultar-nip" data-value = "${Method_Id}">   
       <div class="mb-3 row">
+      ${( Brand_Name === 'GRG')?`
+      <div class="mb-3">
+      <select class="form-select" aria-label="Default select example" name="User_BrandId" required>
+      <option value="1">TOKS</option>
+      <option value="2">PANDA EXPRESS</option>
+      <option value="3">BEER FACTORY</option>
+      <option value="4">FAROLITO</option>
+      <option value="5">SHAKE SHACK</option>
+      </select>
+      </div>`:''
+      }
       <div class="w-100">
         <label for="userNempleado" class="col-4 col-form-label"
           >Ingresa el numero:</label

@@ -1,55 +1,58 @@
-import { obtenerMarca, crearConsulta } from'../../helper/index.js';
-import { postConsultarNip } from '../../services/api-post.js';
-import { mostrarNip, indicarIncompatibilidadBusqueda } from '../../components/index.js';
+import { obtenerMarca, crearConsulta } from "../../helper/index.js";
+import { postConsultarNip } from "../../services/api-post.js";
+import {
+  mostrarNip,
+  indicarIncompatibilidadBusqueda,
+} from "../../components/index.js";
 
 const metodos = {
-    1: "TICKET",
-    2: "ID_MEMBRESIA",
-    3: "TELEFONO"
-}
+  1: "TICKET",
+  2: "ID_MEMBRESIA",
+  3: "TELEFONO",
+};
 
-export const formRealizarConsulta =()=>{
-    
-    const formConsultarNip = document.querySelector('.form-consultar-nip');
+export const formRealizarConsulta = () => {
+  const formConsultarNip = document.querySelector(".form-consultar-nip");
 
-    formConsultarNip.addEventListener('submit', async( event )=>{
+  formConsultarNip.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-        event.preventDefault();
-        
-        const formData = {};
+    const formData = {};
 
-        for( let i of formConsultarNip.elements ){
-            if( i.name.length > 0) formData[i.name] = i.value;
-        }
-        
-        const { Numero } = formData;
-        
-        const method_id = event.target.closest(".form-consultar-nip").dataset.value;
+    for (let i of formConsultarNip.elements) {
+      if (i.name.length > 0) formData[i.name] = i.value;
+    }
 
-        const {User_Id, User_BrandId } = JSON.parse( sessionStorage.getItem('user'));
+    const dataForm = formData;
 
-        const { Brand_Name } = await obtenerMarca( User_BrandId );
+    const method_id = event.target.closest(".form-consultar-nip").dataset.value;
 
-        const { Consult_Id } = await crearConsulta( User_Id );
+    const { User_Id, User_BrandId } = JSON.parse(
+      sessionStorage.getItem("user")
+    );
 
-        const data = {
-            Metodo: metodos[method_id],
-            Numero: Numero,
-            Marca: Brand_Name,
-            CD_ConsultID: Consult_Id,
-            CD_BradID: User_BrandId,
-            CD_MethodID: method_id
-        }
+    const { Brand_Name } = await obtenerMarca(
+      dataForm.User_BrandId ? Number(dataForm.User_BrandId) : User_BrandId
+    );
 
-        const token = sessionStorage.getItem('token');
+    const { Consult_Id } = await crearConsulta(User_Id);
 
-        try {
-            
-            const informacionNip = await postConsultarNip( token, data );
-            mostrarNip( informacionNip );
-        } catch (error) {
-            indicarIncompatibilidadBusqueda()        
-        }
+    const data = {
+      Metodo: metodos[method_id],
+      Numero: dataForm.Numero,
+      Marca: Brand_Name,
+      CD_ConsultID: Consult_Id,
+      CD_BradID: User_BrandId,
+      CD_MethodID: method_id,
+    };
 
-    });
+    const token = sessionStorage.getItem("token");
+
+    try {
+      const informacionNip = await postConsultarNip(token, data);
+      mostrarNip(informacionNip);
+    } catch (error) {
+      indicarIncompatibilidadBusqueda();
+    }
+  });
 };
