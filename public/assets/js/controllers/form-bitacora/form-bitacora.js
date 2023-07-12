@@ -16,6 +16,7 @@ export const formBitacora = () =>{
        if( !data.consultDate ){
         const mensaje = 'Favor de especificar fecha de búsqueda';
         alertaNotificacion( mensaje );
+        limpiarTablaBody();
         return;
        }
 
@@ -23,6 +24,7 @@ export const formBitacora = () =>{
        if( !data.NumEmpleado ){
         const mensaje = 'Favor de especificar el numero de empleado para la busqueda';
         alertaNotificacion( mensaje );
+        limpiarTablaBody();
         return;
        }
 

@@ -1,4 +1,20 @@
 /* Utilidades */
+.titulo-bitacora{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   padding: 0 8rem;
+ }
+
+ 
+.column-flex{
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 1rem;
+}
+
 .centrar-flex{
     display: flex;
     flex-direction: row;
