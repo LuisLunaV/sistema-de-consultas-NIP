@@ -48,7 +48,9 @@ export const formBitacora = () =>{
       const usuarios = Object.values((resp)?resp[0]:'');
 
       limpiarTablaBody();
-      usuarios.forEach( htmlMostrarUsuariosBitacora );
+      usuarios.forEach(( value, index )=>{ 
+        htmlMostrarUsuariosBitacora( value, index ) 
+    });
        
 
     });

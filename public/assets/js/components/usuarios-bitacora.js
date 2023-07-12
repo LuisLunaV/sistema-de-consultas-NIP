@@ -1,12 +1,12 @@
 
-export const htmlMostrarUsuariosBitacora =({ User_Name, CD_NIP, CD_ReferenceNum })=>{
+export const htmlMostrarUsuariosBitacora =( value, index )=>{
     const tbody = document.querySelector('tbody');
-
     const html = `
     <tr>
-    <td class='alinear'>${User_Name}</td>
-    <td class='alinear'>${CD_NIP}</td>
-    <td class='alinear'>${CD_ReferenceNum}</td>
+    <th scope="row">${ index+1 }</th>
+    <td class='alinear'>${value.User_Name}</td>
+    <td class='alinear'>${value.CD_NIP}</td>
+    <td class='alinear'>${value.CD_ReferenceNum}</td>
     </tr>
     `;
     tbody.innerHTML += html;
