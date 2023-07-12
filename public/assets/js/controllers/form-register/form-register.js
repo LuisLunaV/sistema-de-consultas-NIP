@@ -24,7 +24,7 @@ export const formRegister =()=>{
           alert("Por favor, seleccione una marca.");
           return;
         }
-console.log(data)
+
         //Enviamos la data para el registro
         const resp = await postUserCreate( data )
        .catch((err)=>{

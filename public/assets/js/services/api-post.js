@@ -23,7 +23,7 @@ const postLogin = async (data) => {
 };
 
 const postUserCreate = async( data )=>{
-  try {console.log(data)
+  try {
     const resp = await fetch(`${url}${users}`,{
       method: "POST",
       body: JSON.stringify(data),
@@ -135,8 +135,8 @@ const postBuscarPorUsuarioFecha = async( token, data )=>{
            return information;
   
        } else{
-           const error = await resp.json();
-           throw error;
+           const { errors } = await resp.json();
+           throw errors;
        }
   } catch (error) {
    throw error;
