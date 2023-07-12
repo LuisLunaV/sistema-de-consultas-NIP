@@ -28,7 +28,7 @@ const consults_detail = {
       });
       
       if( Object.keys( information[0] ).length === 0){
-        return res.status(200).json({
+        return res.status(400).json({
             msg: `No hay consultas del usuario ${ NumEmpleado } del dia ${ consultDate }`
         })
       }
@@ -38,8 +38,6 @@ const consults_detail = {
       });
 
     } catch (error) {
-
-        console.log(error)
 
         return res.status(500).json({
             err: error,
