@@ -5,6 +5,7 @@ import { crearConsulta } from './crear-consulta.js';
 import { validarRol } from './validar-rol.js';
 import { obtenerUsuarioMarca } from './obtener-usuario-marca.js';
 import { obtenerDatos } from './form-data.js';
+import { obtenerMetodoDeConsulta } from './obtener-metodo.js';
 
 
 export{
@@ -15,5 +16,6 @@ export{
     obtenerUsuarioMarca,
     crearConsulta,
     validarRol,
-    obtenerDatos
+    obtenerDatos,
+    obtenerMetodoDeConsulta
 }
