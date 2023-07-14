@@ -13,7 +13,6 @@
   flex-direction: column;
   align-items: center;
   padding: 3rem 2rem 0 2rem;
-  font-family: var(--fuentePrincipal);
 }
 
 .titulo-mis-servicios h2 {
@@ -38,7 +37,7 @@
 }
 
 .titulo-de-servicios {
-  background: #0c6ffd;
+  background-color: var(--color-red);
   color: #fff;
   padding: 1rem 0;
   text-align: center;
