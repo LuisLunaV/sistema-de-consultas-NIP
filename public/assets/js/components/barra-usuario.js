@@ -12,7 +12,6 @@ export const htmlMostrarUsuario = () => {
                 <i class="bi bi-person-square"></i> 
                 ${User_NumEmpleado}
                 </span>
-                -
                 <span id="numero-empleado">
                 ${marca.Brand_Name}
                 </span>

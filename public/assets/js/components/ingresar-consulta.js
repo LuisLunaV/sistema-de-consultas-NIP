@@ -40,7 +40,7 @@ export const htmlIngresarConsulta =( { Method_Name, Method_Id } )=>{
         />
       </div>
       <div class="d-grid mt-4 text-center">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Realizar consulta</button>
+        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Realizar consulta</button>
         </div>
     </div>   
         </form>
