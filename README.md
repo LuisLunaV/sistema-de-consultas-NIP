@@ -78,6 +78,12 @@ El proyecto sigue una estructura de carpetas y archivos organizada. A continuaci
 
 - El archivo .env contiene las variables de entorno utilizadas para la configuración de la aplicación.
 
+# Requisitos previos
+Antes de utilizar este proyecto, asegúrate de tener instalado lo siguiente:
+
+- Node.js (versión 12 o superior)
+- npm (versión 6 o superior)
+
 # Dependencias del Proyecto
 
 El proyecto depende de las siguientes bibliotecas y paquetes:
