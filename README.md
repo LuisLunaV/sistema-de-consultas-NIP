@@ -165,7 +165,6 @@ El archivo app.js es el punto de entrada principal de la aplicación. En este ar
 # Scripts de Inicio
 Para iniciar la aplicación, ejecuta el siguiente comando en la terminal:
 
-Copy code
 ```console
 node app.js
 ```
