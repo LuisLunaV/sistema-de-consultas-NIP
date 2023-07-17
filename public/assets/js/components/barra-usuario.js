@@ -10,7 +10,7 @@ export const htmlMostrarUsuario = () => {
                 <div id="cont-name-perfil">    
                 <span id="numero-empleado">
                 <i class="bi bi-person-square"></i> 
-                ${User_NumEmpleado}
+                ${User_NumEmpleado} -
                 </span>
                 <span id="numero-empleado">
                 ${marca.Brand_Name}
