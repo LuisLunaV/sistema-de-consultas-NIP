@@ -50,3 +50,26 @@ img {
 .info-content-alert {
   font-size: 2rem !important;
 }
+
+.button-reenviar{
+  padding: 10px 0;
+  text-align: center;
+  max-height: 40px;
+  max-width: 90px;
+  height: 100%;
+  width: 100%;
+
+}
+.button-salir{
+  padding: 10px 0;
+  text-align: center;
+  max-height: 40px;
+  max-width: 90px;
+  height: 100%;
+  width: 100%;
+}
+.swal2-actions{
+  flex-direction: row !important;
+  max-width: 500px !important;
+  width: 100% !important;
+}
