@@ -18,12 +18,7 @@ export const formRegister =()=>{
 
         //Purgamos la data del segundo password ya comparado
         const {repitePassword, ...data} = formData;
-    
-        //Validamos si se selecciono una marca valida en el formulario
-        // if (data.User_BrandId === "Seleccione su marca") {
-        //   alert("Por favor, seleccione una marca.");
-        //   return;
-        // }
+  
 
         //Enviamos la data para el registro
         const resp = await postUserCreate( data )
