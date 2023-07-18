@@ -30,7 +30,7 @@ const users = {
         };
        
        const { 
-        User_BrandId,
+        User_BrandId = 6,
         User_Name , 
         User_NumEmpleado,
         User_Email, 
