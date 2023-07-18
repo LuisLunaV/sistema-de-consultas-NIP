@@ -1,21 +1,5 @@
+import { smsServices } from '../../services/sms-services.js';
 export const mostrarNip = ( {NIP, result} )=>{
-
-  if( result.CD_MethodID != 3 ){
-        Swal.fire({
-        title: "¡Datos verificados! NIP relacionado encontrado.",
-        text: `${NIP}`, 
-        icon:  "success",
-
-        customClass: {
-            popup: "popup-alert",
-            title: "title-alert",
-            icon: "icon-succes",
-            htmlContainer: "info-content-alert",
-            confirmButton: 'cancelButtonWarning-alert',
-        }
-          });
-          return;
-        }
 
         Swal.fire({
           title: "¿Deseas enviar el NIP al cliente que lo está solicitando?",
@@ -36,10 +20,22 @@ export const mostrarNip = ( {NIP, result} )=>{
               confirmButton: "button-reenviar",
               cancelButton: "button-salir"
           }
-            }).then(( resp )=>{
+            }).then( async( resp )=>{
+              //Esto se ejecutara si el usuario acepta realizar el envio del nip al cliente.
               if(resp.isConfirmed){
+                
+                const phoneNumber = result.CD_ReferenceNum;
+
+                //Enviamos el nip y el numero tel. para realizar el envio del sms
+                const resp = await smsServices( NIP, phoneNumber )
+                .catch((err) =>{
+                  console.log(`El erro es: ${err}`)
+                });
+
+                console.log(resp)
+                
                 Swal.fire({
-                  title: `¡NIP relacionado enviado con exito al numero ${result.CD_ReferenceNum}.`,
+                  title: `¡NIP relacionado enviado con exito al numero ${ phoneNumber }!.`,
                   icon:  "success",
 
                   customClass: {
