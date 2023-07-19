@@ -3,14 +3,15 @@ import { compararPasswords, obtenerDatos } from '../../helper/index.js'
 
 const registerForm = document.querySelector('.form-registro');
 
+
 export const formRegister =()=>{
     registerForm.addEventListener('submit', async( event )=>{
         event.preventDefault();
         
         //Validamos si los password en el registro son diferentes.
       if( !compararPasswords() ){
-        registerForm.reset();
         alert('Las contraseñas no coinciden');
+        location.reload();
         return;
       }     
 
