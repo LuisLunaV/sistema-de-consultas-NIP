@@ -1,6 +1,6 @@
 // const url = "http://localhost:8080";
 
-const { url, auth, users, consults, consultsDetails, consultsDate, clients, methods, brands } = {
+const { url, auth, users, consults, consultsDetails, consultsDate, clients, methods, brands, employes } = {
   // url : "http://localhost:8080",
   url : "https://sistema-de-consultas-production.up.railway.app",
   auth: "/auth/login",
@@ -10,7 +10,9 @@ const { url, auth, users, consults, consultsDetails, consultsDate, clients, meth
   consultsDetails: "/consult_datails",
   clients: '/client',
   methods: "/methods",
-  brands: "/brands"
+  brands: "/brands",
+  employes: '/employes'
+
 
 };
 
@@ -23,5 +25,6 @@ export{
     consultsDetails,
     clients,
     methods,
-    brands
+    brands,
+    employes
 }
