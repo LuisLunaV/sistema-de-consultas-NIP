@@ -1,4 +1,5 @@
 const { User } = require('../model/user.js');
+const { Employed } = require('../model/employes.js');
 /**
  * Verifica si ya existe un usuario con el mismo nombre.
  * @param {string} User_NumEmpleado- Nombre de usuario a verificar.
@@ -6,7 +7,6 @@ const { User } = require('../model/user.js');
  */
 
 const userExists = async( User_NumEmpleado = '' )=>{
-    console.log(User_NumEmpleado)
 
     const userExists = await User.findOne({
         where: { User_NumEmpleado }
@@ -43,9 +43,18 @@ const employeNumberExist = async( User_NumEmpleado = '')=>{
     }
 };
 
+const employedExist = async( number = '' )=>{
+
+    const employed = await Employed.findOne({ where: { Emp_Number: number }});
+    if( !employed ){
+        throw new Error(`El empleado ${ number } no esta registrado en la Base de datos`);
+    }
+}
+
 module.exports = {
     userExists,
     userExistById,
     emailExist,
-    employeNumberExist
+    employeNumberExist,
+    employedExist
 };
