@@ -1,6 +1,15 @@
 const url = "http://apisms.c3ntro.com:8282/";
 
-export const smsServices = async( data )=>{
+export const smsServices = async( nip, number )=>{
+
+    const data = {
+    username: "usuario",
+    password: "password",
+    number:   `52${ number }`,
+    message:   `Tu nip solicitado es ${nip}`,
+    mask:      "1",
+    maskValue: "AComerClub"
+}
 
     try {
         const resp = await fetch(`${url}`,{
