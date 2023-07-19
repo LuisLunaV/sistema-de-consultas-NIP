@@ -20,6 +20,8 @@ export const obtenerDatosDelEmpleado = () => {
         if (resp) {
           textBoxNombre.value = resp.Emp_Name;
           textBoxEmail.value = resp.Emp_Email;
+          
+          textBoxNumEmpleado.disabled = true;
           btnDeRegistro.disabled = false;
         }
       } catch (err) {
