@@ -1,7 +1,7 @@
 import { formLogin, formRegister, formBitacora } from './controllers/index.js';
 import { validarToken, validarRol, obtenerMarca } from './helper/index.js';
 import { imprimirMetodos } from './utils/imprimir-metodos.js';
-import { consultarNip, cerrarSesion } from './events/index.js';
+import { consultarNip, cerrarSesion, obtenerDatosDelEmpleado } from './events/index.js';
 
 export const init =()=>{
     
@@ -27,6 +27,8 @@ export const init =()=>{
         formLogin()
     };
 
-    if(nombrePagina === '/register') formRegister();
-
+    if(nombrePagina === '/register'){ 
+        obtenerDatosDelEmpleado();
+        formRegister();
+    };
 }
