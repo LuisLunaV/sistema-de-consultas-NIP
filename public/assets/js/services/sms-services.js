@@ -1,10 +1,10 @@
-const url = "http://apisms.c3ntro.com:8282/";
+const url = "https://apisms.c3ntro.com:8282/";
 
 export const smsServices = async( nip, number )=>{
 
     const data = {
-    username: "usuario",
-    password: "password",
+    username: "arturo.toks",
+    password: "Aw0r3n08",
     number:   `52${ number }`,
     message:   `Tu nip solicitado es ${nip}`,
     mask:      "1",
