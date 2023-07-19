@@ -1,5 +1,23 @@
-import { url, methods, brands } from './index.js';
+import { url, methods, brands, employes } from './index.js';
 
+const getEmployesByNumber = async( number )=>{
+    try {
+        const resp = await fetch(`${ url }${ employes }/${number}`);
+       
+        if ( resp.ok ) {
+            const { employed } = await resp.json();
+
+            return employed;
+ 
+        } else{
+            const { errors } = await resp.json();
+            throw errors;
+        }
+        
+    } catch (error) {
+        throw error;
+    }
+};
 
 const getMetodos = async()=>{
      // Primero, verificamos si el metodo ya se encuentra en la caché
@@ -58,5 +76,6 @@ const getMarca = async()=>{
 }
 export{
     getMetodos,
-    getMarca
+    getMarca,
+    getEmployesByNumber
 }
