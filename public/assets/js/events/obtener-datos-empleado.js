@@ -6,7 +6,7 @@ import { alertaEmpleadoNoExiste } from "../components/component-alert/alert-empl
 export const obtenerDatosDelEmpleado = () => {
   const textBoxNumEmpleado = document.querySelector("#NumEmpleadoCompleto"),
     textBoxNombre = document.querySelector("#nombreCompleto"),
-    textBoxEmail = document.querySelector("#email"),
+    textBoxEmail  = document.querySelector("#email"),
     btnDeRegistro = document.querySelector("#btn-registro");
 
   textBoxNumEmpleado.addEventListener("keyup", async (event) => {
@@ -20,7 +20,7 @@ export const obtenerDatosDelEmpleado = () => {
         if (resp) {
           textBoxNombre.value = resp.Emp_Name;
           textBoxEmail.value = resp.Emp_Email;
-          
+
           textBoxNumEmpleado.disabled = true;
           btnDeRegistro.disabled = false;
         }
