@@ -17,19 +17,8 @@
           </div>
 
           <form class="form-registro" method="post">
+            
             <div class="mb-3">
-              <label for="nombreCompleto" class="form-label"
-                >Nombre completo</label
-              >
-              <input
-                type="text"
-                name="User_Name"
-                class="form-control"
-                id="nombreCompleto"
-                required
-              />
-            </div>
-              <div class="mb-3">
               <label for="NumeroDeEmpleadoCompleto" class="form-label"
                 >Numero de empleado</label
               >
@@ -43,6 +32,19 @@
             </div>
 
             <div class="mb-3">
+              <label for="nombreCompleto" class="form-label"
+                >Nombre completo</label
+              >
+              <input
+                type="text"
+                name="User_Name"
+                class="form-control"
+                id="nombreCompleto"
+                required disabled
+              />
+            </div>
+
+            <div class="mb-3">
               <label for="email" class="form-label">Correo electronico</label>
               <input
                 type="email"
@@ -50,6 +52,7 @@
                 class="form-control"
                 id="email"
                 required
+                disabled
               />
               <div id="emailHelp" class="form-text">
                 Nunca compartiremos su correo electrónico con nadie más.
@@ -85,7 +88,7 @@
             </div>
 
             <div class="d-grid gap-2 text-center">
-              <button type="submit" class="btn btn-danger">
+              <button id="btn-registro" type="submit" class="btn btn-danger" disabled>
                 Crear cuenta
               </button>
             </div>
