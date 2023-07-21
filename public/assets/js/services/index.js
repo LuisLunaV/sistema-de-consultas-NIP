@@ -1,8 +1,5 @@
-// const url = "http://localhost:8080";
-
 const { url, auth, users, consults, consultsDetails, consultsDate, clients, methods, brands, employes } = {
-  // url : "http://localhost:8080",
-  url : "https://sistema-de-consultas-production.up.railway.app",
+  url : "http://localhost:8080",
   auth: "/auth/login",
   users: "/users",
   consults: "/consults",
@@ -12,7 +9,6 @@ const { url, auth, users, consults, consultsDetails, consultsDate, clients, meth
   methods: "/methods",
   brands: "/brands",
   employes: '/employes'
-
 
 };
 
