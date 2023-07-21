@@ -32,7 +32,7 @@ export const mostrarNip = ( {NIP, result} )=>{
                   console.log(`El erro es: ${err}`)
                 });
 
-                console.log(resp)
+                console.log('Servicio:',resp)
                 
                 Swal.fire({
                   title: `¡NIP relacionado enviado con exito al numero ${ phoneNumber }!.`,
