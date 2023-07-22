@@ -38,7 +38,7 @@ const nips = {
             }
 
             //Obtenemos el nip
-            const { NIP } = nip;
+            const { NIP, TELEFONO } = nip;
 
 
             const info = {
@@ -53,6 +53,7 @@ const nips = {
        
 
             return res.status(200).json({
+                TELEFONO,
                 NIP,
                 result
             });

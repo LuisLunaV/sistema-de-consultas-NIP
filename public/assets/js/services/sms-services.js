@@ -1,27 +1,17 @@
-const url = "https://apisms.c3ntro.com:8282/";
+import { urlSmS } from './index.js';
 
-export const smsServices = async( nip, number )=>{
-
-    const data = {
-    username: "arturo.toks",
-    password: "Aw0r3n08",
-    number:   `52${ number }`,
-    message:   `Tu nip solicitado es ${nip}`,
-    mask:      "1",
-    maskValue: "AComerClub"
-}
-
+export const smsServices = async( data )=>{
     try {
-        const resp = await fetch(`${url}`,{
-            method: "POST",
-            body: JSON.stringify( data ),
-            headers: {
-              "Content-Type": "application/json"
-            }
+         // Formatear los datos de la carga como parámetros en la URL
+        const queryParams = new URLSearchParams(data).toString();
+        const urlWhitParams = `${urlSmS}?${queryParams}`;
+
+        const resp = await fetch( urlWhitParams,{
+            method: "POST"
         });
 
         if( resp.ok ){
-            const data = resp.json();
+            const data = await resp.json();
             return data;
         }else{
             const error = await resp.json();

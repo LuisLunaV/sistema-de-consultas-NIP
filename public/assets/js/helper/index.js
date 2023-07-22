@@ -6,6 +6,7 @@ import { validarRol } from './validar-rol.js';
 import { obtenerUsuarioMarca } from './obtener-usuario-marca.js';
 import { obtenerDatos } from './form-data.js';
 import { obtenerMetodoDeConsulta } from './obtener-metodo.js';
+import { formarDataDeSmS } from './obtener-datos-sms.js';
 
 
 export{
@@ -17,5 +18,6 @@ export{
     crearConsulta,
     validarRol,
     obtenerDatos,
-    obtenerMetodoDeConsulta
+    obtenerMetodoDeConsulta,
+    formarDataDeSmS
 }

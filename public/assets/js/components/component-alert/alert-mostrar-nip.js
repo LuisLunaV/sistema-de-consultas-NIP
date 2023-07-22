@@ -1,9 +1,12 @@
+import { formarDataDeSmS } from '../../helper/obtener-datos-sms.js';
 import { smsServices } from '../../services/sms-services.js';
-export const mostrarNip = ( {NIP, result} )=>{
+import { statusSmS } from './alert-status-sms.js';
+
+export const mostrarNip = ( { NIP, TELEFONO } )=>{
 
         Swal.fire({
-          title: "¿Deseas enviar el NIP al cliente que lo está solicitando?",
-          text: `${NIP}`, 
+          title: `¿Deseas enviar el NIP al numero ${TELEFONO} del cliente?`,
+          text: `NIP solicitado: ${NIP}`, 
           icon:  "question",
           confirmButtonColor: "#198744",
           confirmButtonText: "Enviar",
@@ -23,30 +26,22 @@ export const mostrarNip = ( {NIP, result} )=>{
             }).then( async( resp )=>{
               //Esto se ejecutara si el usuario acepta realizar el envio del nip al cliente.
               if(resp.isConfirmed){
-                
-                const phoneNumber = result.CD_ReferenceNum;
 
+                //Formamos la carga que se enviara al servicio de mensajeria
+                const dataSmS = formarDataDeSmS( NIP, TELEFONO )
+                
                 //Enviamos el nip y el numero tel. para realizar el envio del sms
-                const resp = await smsServices( NIP, phoneNumber )
+                const { success, code } = await smsServices( dataSmS )
                 .catch((err) =>{
                   console.log(`El erro es: ${err}`)
                 });
 
-                console.log('Servicio:',resp)
                 
-                Swal.fire({
-                  title: `¡NIP relacionado enviado con exito al numero ${ phoneNumber }!.`,
-                  icon:  "success",
+                //Devuelve la respuesta de entrega de sms.
+                statusSmS( success, code );
+               
 
-                  customClass: {
-                    popup: "popup-alert",
-                    title: "title-alert",
-                    icon: "icon-succes",
-                    htmlContainer: "info-content-alert",
-                    confirmButton: 'cancelButtonWarning-alert',
-                    }
 
-                    });
               }
 
             });
