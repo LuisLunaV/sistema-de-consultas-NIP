@@ -27,7 +27,7 @@ export const formRegister =()=>{
         err.forEach( ( { msg } ) => {
             alert( msg );
         });
-        registerForm.reset();
+        location.reload();
        });
 
        //Validamos que nuestra respuesta haya sido positiva
