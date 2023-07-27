@@ -1,4 +1,4 @@
-const { url, auth, users, consults, consultsDetails, consultsDate, clients, methods, brands, employes, urlSmS } = {
+const { url, auth, users, consults, consultsDetails, consultsDate, clients, methods, brands, employes, urlSmS, urlStatuSmS } = {
   auth:            '/auth/login',
   brands:          '/brands',
   consults:        '/consults',
@@ -9,13 +9,15 @@ const { url, auth, users, consults, consultsDetails, consultsDate, clients, meth
   methods:         '/methods',
   users:           '/users',
   url :            'http://localhost:8080',
-  urlSmS:          'https://apisms.c3ntro.com:8282/'
+  urlSmS:          'https://apisms.c3ntro.com:8282/',
+  urlStatuSmS:     'https://apisms.c3ntro.com:8282/estatus_mensaje.php?'
 
 };
 
 export{
     url, 
     urlSmS,
+    urlStatuSmS,
     auth, 
     users, 
     consults, 
