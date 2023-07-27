@@ -4,7 +4,6 @@ const hbs = require('hbs');
 const path = require('path');
 
 const { dbConnection } = require('../database/config.db');
-const { clientDbConnection } = require('../database/cliente.db');
 
 class Server {
 
@@ -50,7 +49,6 @@ class Server {
   //Llamamos a la BD
   async connectDB(){
     await dbConnection();
-    await clientDbConnection();
   }
 
   middlewares() {

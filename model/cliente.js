@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 
-const { clientDb } = require('../database/cliente.db');
+const { db } = require('../database/config.db');
 
-const Nipsacc = clientDb.define('nipsacc', {
+const Nipsacc = db.define('nipsacc', {
 
     TICKET:{
         type: DataTypes.STRING,
