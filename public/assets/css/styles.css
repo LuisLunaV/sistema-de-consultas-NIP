@@ -73,3 +73,11 @@ img {
   max-width: 500px !important;
   width: 100% !important;
 }
+
+
+.version {
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #777;
+}
