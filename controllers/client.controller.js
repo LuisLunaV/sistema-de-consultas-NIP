@@ -26,8 +26,9 @@ const nips = {
                     //Seleccionamos en metodo
                     [ Metodo === 'TICKET' ? 'TICKET': Metodo === 'ID_MEMBRESIA' ? 'ID_MEMBRESIA' : 'TELEFONO']
                     //Validamos el numero segun el metodo
-                    : Metodo === 'TICKET' ? Numero : Metodo === 'ID_MEMBRESIA'  ? parseInt(Numero):  Numero               
-                }
+                    : Metodo === 'TICKET' ? Numero : Metodo === 'ID_MEMBRESIA'  ? parseInt(Numero):  Numero   
+                },            
+                order: [['FECHA_CREACION', 'DESC']], // Ordenar por fecha de creación en orden descendente
             });
 
             //Validamos si hay un error al ingresar los datos
