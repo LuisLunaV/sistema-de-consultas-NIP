@@ -1,5 +1,5 @@
-import { postLogin } from '../../services/api-post.js';
-import { validarCamposLogin, obtenerDatos } from '../../helper/index.js';
+import { postLogin } from '../services/api-post.js';
+import { validarCamposLogin, obtenerDatos } from '../helper/index.js';
 
 export const formLogin = ()=>{
     const loginForm          = document.querySelector('.form-login'),

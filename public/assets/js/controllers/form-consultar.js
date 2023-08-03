@@ -1,7 +1,7 @@
-import { postConsultarNip } from "../../services/api-post.js";
-import { mostrarNip, indicarIncompatibilidadBusqueda } from "../../components/index.js";
-import { obtenerMarca, crearConsulta, obtenerDatos } from "../../helper/index.js";
-import { obtenerToken } from '../../utils/obtener-token.js';
+import { postConsultarNip } from "../services/api-post.js";
+import { mostrarNip, indicarIncompatibilidadBusqueda } from "../components/index.js";
+import { obtenerMarca, crearConsulta, obtenerDatos } from "../helper/index.js";
+import { obtenerToken } from '../utils/obtener-token.js';
 
 //Nombres de las columnas de la BD cliente donde se filtraran los NIP
 const metodos = {

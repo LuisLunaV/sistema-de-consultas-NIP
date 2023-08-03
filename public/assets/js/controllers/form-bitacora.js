@@ -1,7 +1,7 @@
-import { postBuscarPorUsuarioFecha } from '../../services/api-post.js';
-import { htmlMostrarUsuariosBitacora, alertaNotificacion } from '../../components/index.js';
-import { obtenerDatos } from '../../helper/index.js';
-import { obtenerToken, limpiarTablaBody } from '../../utils/index.js';
+import { postBuscarPorUsuarioFecha } from '../services/api-post.js';
+import { htmlMostrarUsuariosBitacora, alertaNotificacion } from '../components/index.js';
+import { obtenerDatos } from '../helper/index.js';
+import { obtenerToken, limpiarTablaBody } from '../utils/index.js';
 
 export const formBitacora = () =>{
     const formBitacora = document.querySelector('.form-bitacora');

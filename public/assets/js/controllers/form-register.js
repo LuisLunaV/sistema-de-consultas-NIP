@@ -1,5 +1,5 @@
-import { postUserCreate } from '../../services/api-post.js';
-import { compararPasswords, obtenerDatos } from '../../helper/index.js'
+import { postUserCreate } from '../services/api-post.js';
+import { compararPasswords, obtenerDatos } from '../helper/index.js'
 
 const registerForm = document.querySelector('.form-registro');
 
