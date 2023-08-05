@@ -23,6 +23,7 @@ class Server {
       clients: '/client',
       consults: '/consults',
       consultsDetails: '/consult_datails',
+      consultPhoneAndMembership: '/consult_phone_membership',
       employes: '/employes',
       methods: '/methods',
       users: '/users'
@@ -71,14 +72,15 @@ class Server {
     this.app.use( this.pages.bitacora,        require('../routes/bitacora.routes'))
 
 
-    this.app.use( this.paths.auth,            require('../routes/auth.routes.js'))
-    this.app.use( this.paths.brands,          require('../routes/brands.routes'))
-    this.app.use( this.paths.users,           require('../routes/user.routes.js'))
-    this.app.use( this.paths.clients,         require('../routes/client.routes.js'))
-    this.app.use( this.paths.consults,        require('../routes/consult.routes.js'))
-    this.app.use( this.paths.consultsDetails, require('../routes/consultsDetails.routes.js'))
-    this.app.use( this.paths.methods,         require('../routes/method.routes.js'))
-    this.app.use( this.paths.employes,        require('../routes/employed.routes.js'))
+    this.app.use( this.paths.auth,                      require('../routes/auth.routes.js'))
+    this.app.use( this.paths.brands,                    require('../routes/brands.routes'))
+    this.app.use( this.paths.users,                     require('../routes/user.routes.js'))
+    this.app.use( this.paths.clients,                   require('../routes/client.routes.js'))
+    this.app.use( this.paths.consults,                  require('../routes/consult.routes.js'))
+    this.app.use( this.paths.consultsDetails,           require('../routes/consultsDetails.routes.js'))
+    this.app.use( this.paths.consultPhoneAndMembership, require('../routes/consultPhoneAndMembership.routes.js'))
+    this.app.use( this.paths.methods,                   require('../routes/method.routes.js'))
+    this.app.use( this.paths.employes,                  require('../routes/employed.routes.js'))
 
   }
 
