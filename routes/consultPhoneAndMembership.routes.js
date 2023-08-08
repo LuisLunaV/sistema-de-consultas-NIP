@@ -6,8 +6,8 @@ const { postPhoneAndMembership } = require('../controllers/consult_phone_members
 const router = Router();
 
 router.post('/',[
-    validarJWT,
-    validateProperties
+    // validarJWT,
+    // validateProperties
 ], postPhoneAndMembership)
 
 module.exports = router;
