@@ -25,6 +25,9 @@ const Consult_detail = db.define('Consults_detail', {
         type: DataTypes.CHAR,
         require: true
     },
+    CD_Status_SMS:{
+        type: DataTypes.STRING,
+    }
 },{
     tableName: 'Consults_detail',
 }, {
