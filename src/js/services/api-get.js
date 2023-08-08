@@ -25,7 +25,7 @@ const getMetodos = async()=>{
 
      if( metodo ){
          // Si el metodo ya se encuentra en la caché, lo devolvemos
-        return JSON.parse( metodo );
+         localStorage.removeItem('metodos');
      }
     try {
         const resp = await fetch(`${ url }${ methods }`);
@@ -33,7 +33,7 @@ const getMetodos = async()=>{
         if ( resp.ok ) {
          // Si la petición al servidor es exitosa, almacenamos el metodo en la caché.
             const { method } = await resp.json();
-            localStorage.setItem('metodos', JSON.stringify( method ))
+            sessionStorage.setItem('metodos', JSON.stringify( method ))
             
             return method;
 

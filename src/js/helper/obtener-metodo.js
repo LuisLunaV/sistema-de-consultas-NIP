@@ -1,6 +1,6 @@
 export const obtenerMetodoDeConsulta = ( id )=>{
    
-    const metodos = JSON.parse( localStorage.getItem('metodos'));
+    const metodos = JSON.parse( sessionStorage.getItem('metodos'));
 
   const [ metodo ] = metodos.filter(metodo =>{
     if( metodo.Method_Id ===  id){
