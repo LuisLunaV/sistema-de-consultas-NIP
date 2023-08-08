@@ -11,7 +11,7 @@ export const consultarNip =()=>{
 
         if( btnConsultarNip ){
             const id = event.target.closest(".contenedor-de-servicio").dataset.value;
-            const metodos = JSON.parse( localStorage.getItem('metodos'));
+            const metodos = JSON.parse( sessionStorage.getItem('metodos'));
 
             limpiarModalProductos();
 
