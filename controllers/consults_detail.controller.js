@@ -94,9 +94,9 @@ const consults_detail = {
 
         try {
             
-            const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP } = req;    
+            const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP, CD_Status_SMS } = req;    
 
-            const consults_detail = new Consult_detail({ CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP });
+            const consults_detail = new Consult_detail({ CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP, CD_Status_SMS });
 
 
             //Obtenemos el valor del usuario autenticado desde el archivo validarJWT.
