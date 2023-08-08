@@ -34,7 +34,7 @@ const serviceSMS = {
 
       const queryParams   = new URLSearchParams( data ).toString();
       const urlWhitParams = `${ urlStatuSmS }${ queryParams }`;
-  console.log(urlWhitParams)
+      
       const resp = await axios.get( urlWhitParams );
 
       if ( resp.status === 200 ) {
