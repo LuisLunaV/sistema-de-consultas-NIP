@@ -11,7 +11,7 @@ export const formBitacora = () =>{
 
        const token = obtenerToken();
        const data = obtenerDatos( formBitacora );
-console.log(data)
+
         // Verificar si la fecha de búsqueda está especificada
        if( !data.consultDate ){
         const mensaje = 'Favor de especificar fecha de búsqueda';
@@ -42,11 +42,10 @@ console.log(data)
                             formBitacora.reset();
                          });
 
-
       // Extraer los valores del objeto 'resp' en un array utilizando Object.values.
       // Si 'resp' es nulo o indefinido, se utiliza un array vacío.
       const usuarios = Object.values((resp)?resp[0]:'');
-console.log(usuarios)
+
       limpiarTablaBody();
       usuarios.forEach(( value, index )=>{ 
         htmlMostrarUsuariosBitacora( value, index ) 
