@@ -32,7 +32,7 @@ const consults_detail = {
             msg: `No hay consultas del usuario ${ NumEmpleado } del dia ${ consultDate }`
         })
       }
-    
+
       return res.status(200).json({
         information
       });
@@ -97,10 +97,6 @@ const consults_detail = {
             const { CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP, CD_Status_SMS } = req;    
 
             const consults_detail = new Consult_detail({ CD_ConsultID, CD_BradID, CD_MethodID, CD_ReferenceNum, CD_NIP, CD_Status_SMS });
-
-
-            //Obtenemos el valor del usuario autenticado desde el archivo validarJWT.
-            // const usuarioAutenticado = req.user;
             
             await consults_detail.save();
         
