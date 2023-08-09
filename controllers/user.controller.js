@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 
 const { User } = require('../model/user.js');
 
-const { validateProperties } = require('../helpers/validate-objects.js');
+const { validateObjectProperties } = require('../helpers/validate-objects.js');
 
 const users = {
 
@@ -21,7 +21,7 @@ const users = {
 
         try{
         //Validamos si las propiedades del objeto estan vacias
-       if( validateProperties( body ) ){
+       if( validateObjectProperties( body ) ){
 
        return res.status(400).json({
             msg: 'Se necesitan llenar todos los campos'
