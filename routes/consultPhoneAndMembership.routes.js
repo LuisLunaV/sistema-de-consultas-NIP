@@ -7,7 +7,7 @@ const router = Router();
 
 router.post('/',[
     // validarJWT,
-    // validateProperties
+    validateProperties
 ], postPhoneAndMembership)
 
 module.exports = router;
