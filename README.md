@@ -99,6 +99,8 @@ El proyecto depende de las siguientes bibliotecas y paquetes:
 
 5. JSON Web Token (JWT): Biblioteca para generar y verificar tokens de autenticación.
 
+6. Axios
+
 # Configuración de la Base de Datos
 
  El proyecto utiliza una base de datos relacional. La configuración de la base de datos se encuentra en el archivo __config.js__ dentro de la carpeta __config__. A continuación se detallan los parámetros de configuración:
