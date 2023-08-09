@@ -3,6 +3,7 @@ const { request, response } = require('express');
 const { Nipsacc }            = require('../model/cliente.js');
 const { postConsultDetail } = require('../controllers/consults_detail.controller.js')
 
+const { validateObjectProperties } = require('../helpers/validate-objects.js');
 const { smsSend, smsStatus } = require('../service/sms-services.js');
 const { generateSmsPayload, statusSmsPayload } = require('../helpers/generate-sms.js');
 
@@ -10,13 +11,22 @@ const consult_phone_membership ={
 
     postPhoneAndMembership: async( req = request, res = response )=>{
 
+        const body = req.body;
+
+        //Validamos que los campos no esten vacios
+        if( validateObjectProperties( body ) ){
+            return res.status(400).json({
+                 msg: 'Se necesitan llenar todos los campos'
+                });        
+             };
+
        const { MARCA, 
                TELEFONO, 
                ID_MEMBRESIA,                    
                CD_ConsultID,
                CD_BradID,
                CD_MethodID,
-             } = req.body;
+             } = body;
 
        const nip = await Nipsacc.findOne({
         where:{
@@ -34,12 +44,20 @@ const consult_phone_membership ={
 
        const { NIP } = nip;
 
+       
        //Generamos la carga SMS
        const smsPayload = generateSmsPayload( NIP, TELEFONO );
        //Enviamos el SMS al cliente
-       const { id } = await smsSend( smsPayload );
+       const { id, success, code } = await smsSend( smsPayload );
        
-      
+      //Mostramos el nip y el numero telefonico del cliente
+      res.status(200).json({
+        TELEFONO,
+        NIP,
+        "Enviado":success,
+        "CODIGO":code
+       });
+
        //Generamos la carga para obtener el status del SMS
        const getStatuPayload = statusSmsPayload( id )
 
@@ -59,18 +77,14 @@ const consult_phone_membership ={
                     CD_ConsultID,
                     CD_BradID,
                     CD_MethodID,
-                    CD_ReferenceNum:`${TELEFONO}/${ID_MEMBRESIA}`,
+                    CD_ReferenceNum:`${ID_MEMBRESIA}/${TELEFONO}`,
                     CD_NIP: NIP,
                     CD_Status_SMS: resp.code
                 }
             
-               const result = await postConsultDetail( {...info} );
+               await postConsultDetail( {...info} );
             
-                  return res.status(200).json({
-                    TELEFONO,
-                    NIP,
-                    result
-                   });
+
             } else {
                 // Esperar el próximo ciclo de polling
                 await new Promise(resolve => setTimeout(resolve, interval));
