@@ -15,6 +15,7 @@ export const htmlMostrarUsuariosBitacora =( value, index )=>{
     <td class='alinear'>${
        horaDeConsulta( value.CreatedAt )
     }</td>
+    <td class='alinear'>${value.CD_Status_SMS}</td>
     </tr>
     `;
     tbody.innerHTML += html;
