@@ -3,7 +3,7 @@ const { request, response } = require('express');
 const { db } = require('../database/config.db');
 
 const { Consult_detail } = require('../model/consults_detail.js');
-
+const { statusSmsPayload, initigPolling } = require("../helpers/index.js");
 const consults_detail = {
 
         /**
@@ -114,9 +114,21 @@ const consults_detail = {
     },
 
     patchConsultDetail: async( req = request, res = response )=>{
+        const { id } = req.params;
         const { body } = req;
-        console.log(body)
-        // const consults_detail = await Consult_detail.findByPk();
+        
+        const getStatuPayload = statusSmsPayload(body.messageid);
+        const { code } = await initigPolling(getStatuPayload);
+        const consults_detail = await Consult_detail.findByPk( id );
+        
+        const data = {
+                "CD_Status_SMS":code
+        }
+       const resp = await consults_detail.update( data, { new: true });
+
+        return res.status(200).json({
+            resp
+        })
     }
 };
 
