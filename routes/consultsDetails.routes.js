@@ -33,6 +33,6 @@ check('CD_NIP','Este no es un nip valido').isInt(),
 validateProperties ],
 postConsultDetail);
 
-router.patch('/', patchConsultDetail)
+router.patch('/:id', patchConsultDetail)
 
 module.exports = router;
