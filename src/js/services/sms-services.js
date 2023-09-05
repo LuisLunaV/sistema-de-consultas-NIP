@@ -1,4 +1,4 @@
-import { urlSmS, urlStatuSmS } from './index.js';
+import { urlSmS } from './index.js';
 
 const smsServices = async( data )=>{
     try {
@@ -24,26 +24,7 @@ const smsServices = async( data )=>{
 
 };
 
-const statusSmS = async( data ) => {
-    try {
-        const queryParams   = new URLSearchParams( data ).toString();
-        const urlWhitParams = `${ urlStatuSmS }${ queryParams }`;
-    
-        const resp = await fetch( urlWhitParams );
-        
-        if ( resp.ok ) {
-            const data = await resp.json();
-            return data;
-        } else {
-            const error = await resp.json();
-            throw error;
-        }
-    } catch (error) {
-        throw error;     
-    }  
-};
 
 export{
     smsServices,
-    statusSmS
 }

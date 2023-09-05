@@ -143,11 +143,36 @@ const postBuscarPorUsuarioFecha = async( token, data )=>{
   }
 };
 
+const patchConsultDetails = async({CD_Id, ...body})=>{
+  try {
+   const resp = await fetch(`${ url }${ consultsDetails }/${CD_Id}`,{
+      method: 'PATCH',
+      body: JSON.stringify(body),
+      headers: {
+          'Content-Type':'application/json'
+      }
+    })
+
+    if( resp.ok ){
+
+      const { resp } = await resp.json();  
+      return resp;
+
+    } else{
+      const error = await resp.json();
+      throw error;
+  }
+  } catch (error) {
+    throw error;
+  }
+}
+
 export{
     postLogin,
     postUserCreate,
     postConsultCreate,
     postBuscarConsulta,
     postConsultarNip,
-    postBuscarPorUsuarioFecha
+    postBuscarPorUsuarioFecha,
+    patchConsultDetails
 }
