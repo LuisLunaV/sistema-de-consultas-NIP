@@ -9,7 +9,8 @@ const { employeNumberExist } = require('../helpers/db-validators.js');
 
 const { postConsultDetail, 
         getConsultDetailId, 
-        getStoredProcedure } = require('../controllers/consults_detail.controller.js');
+        getStoredProcedure,
+        patchConsultDetail } = require('../controllers/consults_detail.controller.js');
 
 const router = Router();
 
@@ -31,5 +32,7 @@ check('CD_ReferenceNum','Se debe ingresar un numero de referencia').not().isEmpt
 check('CD_NIP','Este no es un nip valido').isInt(),
 validateProperties ],
 postConsultDetail);
+
+router.patch('/', patchConsultDetail)
 
 module.exports = router;
