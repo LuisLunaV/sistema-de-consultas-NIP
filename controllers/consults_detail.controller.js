@@ -111,6 +111,12 @@ const consults_detail = {
                 msg: 'Hubo un error en el servidor'
             })
         }
+    },
+
+    patchConsultDetail: async( req = request, res = response )=>{
+        const { body } = req;
+        console.log(body)
+        // const consults_detail = await Consult_detail.findByPk();
     }
 };
 
