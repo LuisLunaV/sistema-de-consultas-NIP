@@ -49,8 +49,10 @@ export const formRealizarConsulta = () => {
     
     //Enviamos el token y la data para realizar la consulta al backend
     try {
+      
       const informacionNip = await postConsultarNip(token, data);
       mostrarNip(informacionNip);
+
     } catch (error) {
       indicarIncompatibilidadBusqueda();
     }
